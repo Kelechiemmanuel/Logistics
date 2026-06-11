@@ -12,25 +12,27 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const res = await API.post('api/auth/login', form);
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
+            await API.post('api/auth/login', form);
 
-        const role = res.data.user.role;
+            localStorage.setItem("token", resizeBy.data.token);
+            localStorage.setItem("user", JSON.stringify(res.data.user));
 
-        if (role === "admin") {
-            navigate("/admin/dashboard");
-        } 
-        else if (role === "driver") {
-            navigate("/driver/dashboard");
-        } 
-        else {
-            navigate("/customer/dashboard");
-        }
-         console.log(res.data);
+            setTimeout(() => {
+                if (res.data.user.role === "admin") {
+                    navigate("/admin/dashboard")
+                } else if (res.data.user.role === "driver") {
+                    navigate("/driver/dashboard")
+                } else if (res.data.user.role === "customer") {
+                    navigate("/customer/dashboard")
+                } else {
+                    setSuccess("You are logged in")
+                    navigate("/")
+                }
+            }, 3000);
         } catch (error) {
-           console.log("Error in log in", error.response?.data);
-    setError(error.response?.data?.message || "Failed to login");
+            console.log("Error in log in", error);
+            setError(error.response?.data?.error)
+            setError("Failed to login");
         }
     }
     return (
