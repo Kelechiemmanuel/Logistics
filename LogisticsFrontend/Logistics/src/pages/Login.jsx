@@ -17,18 +17,20 @@ const Login = () => {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));
 
-            setTimeout(() => {
-                if (res.data.user.role === "admin") {
-                    navigate("/admin/dashboard")
-                } else if (res.data.user.role === "driver") {
-                    navigate("/driver/dashboard")
-                } else if (res.data.user.role === "customer") {
-                    navigate("/customer/dashboard")
-                } else {
-                    setSuccess("You are logged in")
-                    navigate("/")
-                }
-            }, 3000);
+            const role = res.data.user.role?.toLowerCase().trim();
+
+            if (role === "admin") {
+                navigate("/admin/dashboard");
+            }
+            else if (role === "driver") {
+                navigate("/driver/dashboard");
+            }
+            else if (role === "customer") {
+                navigate("/customer/dashboard");
+            }
+            else {
+                navigate("/");
+            }
         } catch (error) {
             console.log("Error in log in", error);
             setError(error.response?.data?.error)
