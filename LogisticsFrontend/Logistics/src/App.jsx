@@ -7,7 +7,7 @@ import Offices from './pages/Offices'
 import Contacts from './pages/Contacts'
 import About from './pages/About'
 import Account from './pages/Account'
-import protectedRoute from './components/protectedRoute';
+import ProtectedRoute from './components/protectedRoute';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AdminDashboard from './protected/AdminDashboard';
 import CustomerDashboard from './protected/CustomerDashboard';
@@ -31,26 +31,26 @@ const App = () => {
 
           <Route path='/admin/dashboard'
             element={
-              <protectedRoute allowedRoles={["admin"]}>
+              <ProtectedRoute allowedRoles={["admin"]}>
                 <AdminDashboard />
-              </protectedRoute>
+              </ProtectedRoute>
             }
           />
 
           <Route path='/driver/dashboard'
             element={
-              <protectedRoute allowedRoles={["driver"]}>
+              <ProtectedRoute allowedRoles={["driver"]}>
                 <DriverDashboard />
-              </protectedRoute>
+              </ProtectedRoute>
             }
           />
 
           <Route
             path='/customer/dashboard'
             element={
-              <protectedRoute allowedRoles={["customer"]}>
+              <ProtectedRoute allowedRoles={["customer"]}>
                 <CustomerDashboard />
-              </protectedRoute>
+              </ProtectedRoute>
             }
           />
 
