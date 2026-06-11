@@ -38,30 +38,38 @@ const Login = () => {
         }
     }
     return (
-        <div className="p-20">
-            <h2>Login</h2>
-            {error && <p className="text-red-600">{error}</p>}
-            {success && <p className="text-green-500">{success}</p>}
+    <div className='flex justify-center items-center h-screen'>
+    <div className='flex justify-center items-center bg-[#3447AA] w-[50%] p-10'>
+      <div className=" flex flex-col gap-5 text-center shadow-2xl w-full p-10 text-[#FBEAEB]">
+        <h2>Login</h2>
+        {success && <p className="text-green-500">{success}</p>}
+        {error && <p className="text-red-500">{error}</p>}
 
-            <input
-                placeholder="Email"
-                onChange={(e) =>
-                    setForm({ ...form, email: e.target.value })
-                }
-            />
+        <input
+          placeholder="Email"
+          onChange={(e) =>
+            setForm({ ...form, email: e.target.value })
+          }
+          className='outline-0 border-b-2 border-b-[#FBEAEB] p-5 w-full'
+        />
 
-            <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) =>
-                    setForm({ ...form, password: e.target.value })
-                }
-            />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) =>
+            setForm({ ...form, password: e.target.value })
+          }
+          className='outline-0 border-b-2 border-b-[#FBEAEB] p-5'
+        />
 
-            <button onClick={handleLogin} className="cursor-pointer">Login</button>
-            <p>Do not have an account</p>
-            <button onClick={() => navigate("/account")}>Register</button>
-        </div>
+        <button onClick={handleLogin}>Login</button>
+        <p className='flex gap-3 justify-center items-center'>Already have an account
+          <button className='cursor-pointer hover:text-green-500' onClick={() => navigate("/account")}>Register</button>
+        </p> 
+      </div>
+    </div>
+    </div>
+
     )
 }
 
