@@ -7,7 +7,12 @@ import Offices from './pages/Offices'
 import Contacts from './pages/Contacts'
 import About from './pages/About'
 import Account from './pages/Account'
+import protectedRoute from './components/protectedRoute';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AdminDashboard from './protected/AdminDashboard';
+import CustomerDashboard from './protected/CustomerDashboard';
+import DriverDashboard from './protected/DriverDashboard'
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -15,12 +20,41 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/services' element={<Services />}/>
-          <Route path='/offices' element={<Offices />}/>
-          <Route path='/contacts' element={<Contacts />}/>
-          <Route path='/about' element={<About />}/>
-          <Route path='/account' element={<Account />}/>
+          <Route path='/' element={<Home />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/offices' element={<Offices />} />
+          <Route path='/contacts' element={<Contacts />} />
+          <Route path='/about' element={<About />} />
+
+          <Route path='/account' element={<Account />} />
+          <Route path='/login' element={<Login />}/>
+
+          <Route path='/admin/dashboard'
+            element={
+              <protectedRoute allowedRoles={["admin"]}>
+                <AdminDashboard />
+              </protectedRoute>
+            }
+          />
+
+          <Route path='/driver/dashboard'
+            element={
+              <protectedRoute allowedRoles={["driver"]}>
+                <DriverDashboard />
+              </protectedRoute>
+            }
+          />
+
+          <Route
+            path='/customer/dashboard'
+            element={
+              <protectedRoute allowedRoles={["customer"]}>
+                <CustomerDashboard />
+              </protectedRoute>
+            }
+          />
+
+
 
         </Routes>
       </BrowserRouter>

@@ -75,7 +75,7 @@ export default function Home() {
       </AnimatePresence>
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/80" />
+      <div className="absolute inset-0 bg-[#3447AA]/80" />
 
       {/* CONTENT */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-5">
@@ -87,7 +87,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <ActiveIcon size={50} className="text-white mb-4" />
+          <ActiveIcon size={50} className="text-[#FBEAEB] mb-4" />
         </motion.div>
 
         {/* TITLE */}
@@ -96,7 +96,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold text-white"
+          className="text-4xl md:text-6xl font-bold text-[#FBEAEB]"
         >
           {slides[current].title}
         </motion.h1>
@@ -107,13 +107,13 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-4 text-gray-300"
+          className="mt-4 text-[#FBEAEB]"
         >
           {slides[current].subtitle}
         </motion.p>
 
         {/* CTA */}
-        <button className="mt-8 px-6 py-3 bg-white text-black rounded-full">
+        <button className="mt-8 px-6 py-3 bg-[#FBEAEB] text-[#3447AA] rounded-full">
           Discover More
         </button>
 
@@ -131,18 +131,15 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`
-                  cursor-pointer flex flex-col items-center p-6 rounded-xl group hover:border-amber-300
+                  cursor-pointer flex flex-col items-center p-6 rounded-xl group
                   transition
                   ${isActive ? "bg-white/20" : "bg-white/5"}
                 `}
               >
-                <Icon size={40} className="text-white group-hover:text-orange-300" />
-                <h3 className="mt-4 font-bold text-white gro group-hover:text-orange-300">
+                <Icon size={40} className="text-white" />
+                <h3 className="mt-4 font-bold text-white">
                   {item.title}
                 </h3>
-                {/* <p className="text-sm text-gray-300 text-center">
-                  {item.subtitle}
-                </p> */}
               </motion.div>
             );
           })}

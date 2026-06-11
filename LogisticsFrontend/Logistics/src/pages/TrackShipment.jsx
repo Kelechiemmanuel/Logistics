@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import route from '../assets/route.jpg'
 import shipping from '../assets/shipping.jpg'
+import API from '../api/api'
+
+
 const TrackShipment = () => {
+  const [tracking, setTracking] = useState([])
+
+  useEffect(() => {
+    API.get('/track/:trackingId')
+    .then((res) => setTracking(res.data))
+    .catch((error) => {
+      console.log("Error fetching tracking", error);
+      
+    })
+  })
   return (
 <section className="relative w-full h-[50%] overflow-hidden bg-transparent p-30">
 

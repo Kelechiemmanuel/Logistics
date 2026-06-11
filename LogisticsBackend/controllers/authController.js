@@ -6,12 +6,12 @@ const pool = require('../config/db');
 const register = async (req, res) => {
     const { fullname, email, password } = req.body;
 
-            // Checking if the input fields are empty
-        if (!fullname || !email || !password) {
-            return res.status(400).json({
-                message: "Please fill in the fields"
-            })
-        }
+    // Checking if the input fields are empty
+    if (!fullname || !email || !password) {
+        return res.status(400).json({
+            message: "Please fill in the fields"
+        })
+    }
     try {
         const userExists = await pool.query('SELECT * FROM users WHERE email = $1', [email.toLowerCase().trim()]);
         if (userExists.rows.length > 0) {
@@ -49,11 +49,11 @@ const login = async (req, res) => {
         if (user.rows.length === 0) {
             return res.status(400).json({
                 message: "User does not exist"
-            });    
+            });
         }
 
         const isMatch = await bcrypt.compare(password, user.rows[0].password);
-        if (!isMatch){
+        if (!isMatch) {
             return res.status(400).json({
                 message: "Invalid credentials"
             });
@@ -61,12 +61,13 @@ const login = async (req, res) => {
 
         const token = jwt.sign({
             id: user.rows[0].id,
+            fullname: user.rows[0].fullname,
             email: user.rows[0].email,
             role: user.rows[0].role
         },
-        process.env.JWT_SECRET,
-        {expiresIn: '7d'}
-    );
+            process.env.JWT_SECRET,
+            { expiresIn: '7d' }
+        );
         return res.status(200).json({
             message: "Login successful",
             token: token,
@@ -85,4 +86,4 @@ const login = async (req, res) => {
 
 
 
-module.exports = {register, login};
+module.exports = { register, login };
