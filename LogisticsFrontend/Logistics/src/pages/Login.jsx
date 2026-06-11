@@ -59,6 +59,8 @@ const Login = () => {
             />
 
             <button onClick={handleLogin} className="cursor-pointer">Login</button>
+            <p>Do not have an account</p>
+            <button onClick={() => navigate("/account")}>Register</button>
         </div>
     )
 }
