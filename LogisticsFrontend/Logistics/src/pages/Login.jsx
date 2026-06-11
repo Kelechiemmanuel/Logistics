@@ -62,7 +62,7 @@ const Login = () => {
           className='outline-0 border-b-2 border-b-[#FBEAEB] p-5'
         />
 
-        <button className='className=cursor-pointer' onClick={handleLogin}>Login</button>
+        <button className='cursor-pointer' onClick={handleLogin}>Login</button>
         <p className='flex gap-3 justify-center items-center'>Already have an account
           <button className='cursor-pointer hover:text-green-500' onClick={() => navigate("/account")}>Register</button>
         </p> 
