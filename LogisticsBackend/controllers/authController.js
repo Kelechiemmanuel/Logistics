@@ -45,7 +45,7 @@ const login = async (req, res) => {
         });
     };
     try {
-        const user = await pool.query('SELECT * FROM users WHERE email = $1', [email.toLowerCase().trim()]);
+        const user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
         if (user.rows.length === 0) {
             return res.status(400).json({
                 message: "User does not exist"
