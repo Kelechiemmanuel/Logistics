@@ -37,54 +37,65 @@ const register = async (req, res) => {
 }
 
 //LOGIN A USER
-const login = async (req, res) => {
-    const { email, password } = req.body
-    if (!email || !password) {
+const { email, password } = req.body;
+
+if (!email || !password) {
+    return res.status(400).json({
+        message: "Please fill in the fields"
+    });
+}
+
+try {
+    const cleanEmail = email.toLowerCase().trim();
+
+    const user = await pool.query(
+        'SELECT * FROM users WHERE email = $1',
+        [cleanEmail]
+    );
+
+    if (user.rows.length === 0) {
         return res.status(400).json({
-            message: "Please fill in the fields"
+            message: "User does not exist"
         });
-    };
-    try {
-        const user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-        if (user.rows.length === 0) {
-            return res.status(400).json({
-                message: "User does not exist"
-            });
-        }
+    }
 
-        const isMatch = await bcrypt.compare(password, user.rows[0].password);
-        if (!isMatch) {
-            return res.status(400).json({
-                message: "Invalid credentials"
-            });
-        }
+    const isMatch = await bcrypt.compare(
+        password,
+        user.rows[0].password
+    );
 
-        const token = jwt.sign({
+    if (!isMatch) {
+        return res.status(400).json({
+            message: "Invalid credentials"
+        });
+    }
+
+    const token = jwt.sign(
+        {
             id: user.rows[0].id,
             fullname: user.rows[0].fullname,
             email: user.rows[0].email,
             role: user.rows[0].role
         },
-            process.env.JWT_SECRET,
-            { expiresIn: '7d' }
-        );
-        return res.status(200).json({
-            message: "Login successful",
-            token,
-            user: {
-                id: user.rows[0].id,
-                email: user.rows[0].email,
-                role: user.rows[0].role
-            }
+        process.env.JWT_SECRET,
+        { expiresIn: '7d' }
+    );
 
-        })
+    return res.status(200).json({
+        message: "Login successful",
+        token,
+        user: {
+            id: user.rows[0].id,
+            email: user.rows[0].email,
+            role: user.rows[0].role
+        }
+    });
 
-    } catch (error) {
-        console.log("LOGIN ERROR", error);
-        return res.status(500).json({
-            message: "Internal server error"
-        });
-    }
+} catch (error) {
+    console.log("LOGIN ERROR", error);
+    return res.status(500).json({
+        message: "Internal server error"
+    });
 }
 
 
