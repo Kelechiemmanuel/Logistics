@@ -27,8 +27,7 @@ const Login = () => {
         else {
             navigate("/customer/dashboard");
         }
-         console.log(res.data);console.log("LOGIN RESPONSE:", res.data);
-console.log("ROLE:", res.data.user.role);
+         console.log(res.data);
         } catch (error) {
            console.log("Error in log in", error.response?.data);
     setError(error.response?.data?.message || "Failed to login");
