@@ -12,9 +12,9 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            await API.post('api/auth/login', form);
+            const res = await API.post('api/auth/login', form);
 
-            localStorage.setItem("token", resizeBy.data.token);
+            localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));
 
             setTimeout(() => {
