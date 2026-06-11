@@ -61,7 +61,7 @@ const Account = () => {
           className='outline-0 border-b-2 border-b-[#FBEAEB] p-5'
         />
 
-        <button className='className=cursor-pointe' onClick={handleRegister}>Register</button>
+        <button className='className=cursor-pointer' onClick={handleRegister}>Register</button>
         <p className='flex gap-3 justify-center items-center'>Already have an account
           <button onClick={() => navigate("/login")} className='cursor-pointer hover:text-green-500'>Login</button>
         </p> 
