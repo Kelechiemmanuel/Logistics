@@ -38,12 +38,12 @@ const register = async (req, res) => {
 
 //LOGIN A USER
 const login = async (req, res) => {
-    const { email, password } = req.body
-    if (!email || !password) {
-        return res.status(400).json({
-            message: "Please fill in the fields"
-        });
-    };
+    // const { email, password } = req.body
+    // if (!email || !password) {
+    //     return res.status(400).json({
+    //         message: "Please fill in the fields"
+    //     });
+    // };
     try {
         const user = await pool.query('SELECT * FROM users WHERE email = $1', [email.toLowerCase().trim()]);
         if (user.rows.length === 0) {
