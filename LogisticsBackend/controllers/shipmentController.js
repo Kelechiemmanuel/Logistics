@@ -5,6 +5,7 @@ const { calculatePrice } = require('../Services/pricingService');
 
 const createShipment = async (req, res) => {
     const {
+        vehicle,
         service_type,
         pickup_address,
         pickup_lat,
@@ -22,6 +23,7 @@ const createShipment = async (req, res) => {
         const shipment = await pool.query(`
   INSERT INTO shipments (
     tracking_id,
+    vehicle,
     service_type,
     pickup_address,
     pickup_lat,
@@ -37,6 +39,7 @@ const createShipment = async (req, res) => {
   RETURNING *
 `, [
             tracking_id,
+            vehicle,
             service_type,
             pickup_address,
             pickup_lat,
