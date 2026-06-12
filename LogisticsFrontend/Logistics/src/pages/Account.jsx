@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import API from '../api/api'
 import { useNavigate } from 'react-router-dom'
+import Spinner from '../util/Spinner'
 
 
 const Account = () => {
+  const [loading, setLoading] = useState(true)
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [form, setForm] = useState({
@@ -27,7 +29,16 @@ const Account = () => {
     }
   }
 
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2000);
 
+    return () => clearTimeout(timer)
+  }, [])
+
+if (loading) return <Spinner />
   return (
     <div className='flex justify-center items-center h-screen bg-[#f3f4f6]'>
     <div className='flex justify-center items-center w-[45%] p-10'>
