@@ -29,10 +29,10 @@ const Account = () => {
 
 
   return (
-    <div className='flex justify-center items-center h-screen'>
-    <div className='flex justify-center items-center bg-[#3447AA] w-[50%] p-10'>
-      <div className=" flex flex-col gap-5 text-center shadow-2xl w-full p-10 text-[#FBEAEB]">
-        <h2>Register</h2>
+    <div className='flex justify-center items-center h-screen bg-[#f3f4f6]'>
+    <div className='flex justify-center items-center w-[45%] p-10'>
+      <div className="flex flex-col gap-8 text-center w-full p-10 text-[#777d87] text-xl">
+        <h2 className='text-4xl font-bold'>Register</h2>
         {success && <p className="text-green-500">{success}</p>}
         {error && <p className="text-red-500">{error}</p>}
         
@@ -41,7 +41,7 @@ const Account = () => {
           onChange={(e) =>
             setForm({ ...form, fullname: e.target.value })
           }
-          className='outline-0 border-b-2 border-b-[#FBEAEB] p-5'
+          className='outline-0 border border-[#777d87] bg-[#ffffff] p-4 w-full rounded-xl'
         />
 
         <input
@@ -49,7 +49,7 @@ const Account = () => {
           onChange={(e) =>
             setForm({ ...form, email: e.target.value })
           }
-          className='outline-0 border-b-2 border-b-[#FBEAEB] p-5 w-full'
+          className='outline-0 border border-[#777d87] bg-[#ffffff] p-4 w-full rounded-xl'
         />
 
         <input
@@ -58,10 +58,10 @@ const Account = () => {
           onChange={(e) =>
             setForm({ ...form, password: e.target.value })
           }
-          className='outline-0 border-b-2 border-b-[#FBEAEB] p-5'
+          className='outline-0 border border-[#777d87] bg-[#ffffff] p-4 w-full rounded-xl'
         />
 
-        <button className='cursor-pointer' onClick={handleRegister}>Register</button>
+        <button className='bg-[#0a0a0a] text-[#ffffff] cursor-pointer outline-0 p-4 w-full rounded-xl' onClick={handleRegister}>Register</button>
         <p className='flex gap-3 justify-center items-center'>Already have an account
           <button onClick={() => navigate("/login")} className='cursor-pointer hover:text-green-500'>Login</button>
         </p> 
