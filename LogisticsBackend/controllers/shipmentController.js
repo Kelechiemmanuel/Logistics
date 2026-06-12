@@ -20,23 +20,22 @@ const createShipment = async (req, res) => {
     const amount = calculatePrice(distance, weight);
     try {
         const shipment = await pool.query(`
-            INSERT INTO shipments (
-            tracking_id,
-            pickup_address,
-            pickup_lat,
-            pickup_lng,
-            destination_address,
-            destination_lat,
-            destination_lng,
-            weight,
-            distance,
-            service_type,
-            amount,
-            customer_id
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
-             RETURNING *
-             `, 
-             [
+  INSERT INTO shipments (
+    tracking_id,
+    service_type,
+    pickup_address,
+    pickup_lat,
+    pickup_lng,
+    destination_address,
+    destination_lat,
+    destination_lng,
+    weight,
+    distance,
+    amount,
+    customer_id
+  ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+  RETURNING *
+`, [
             tracking_id,
             service_type,
             pickup_address,
@@ -54,7 +53,7 @@ const createShipment = async (req, res) => {
             message: "Shipment created successfully",
             shipment: shipment.rows[0]
         });
-    } catch (error){
+    } catch (error) {
         console.log("CREATE SHIPMENT ERROR", error);
         return res.status(500).json({
             message: "Internal server error"
@@ -63,4 +62,4 @@ const createShipment = async (req, res) => {
 }
 
 
-module.exports = {createShipment};
+module.exports = { createShipment };
