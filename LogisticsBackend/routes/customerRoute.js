@@ -18,9 +18,9 @@ router.get('/track/:trackingId',
     trackShipments
 )
 
-// router.post('/create', 
-//     authMiddleware, 
-//     roleMiddleware("customer"),
-//     createShipment);
+router.post('/create', 
+    authMiddleware, 
+    roleMiddleware("customer"),
+    createShipment);
 
 module.exports = router;

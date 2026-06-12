@@ -22,10 +22,6 @@ const Login = () => {
 
             const role = res.data.user.role?.toLowerCase().trim();
 
-            if(!email || !password){
-              setError("Your field are empty")
-            }
-
             if (role === "admin") {
                 navigate("/admin/dashboard");
             }
