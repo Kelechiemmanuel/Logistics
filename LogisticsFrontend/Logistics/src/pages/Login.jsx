@@ -6,7 +6,6 @@ import Spinner from '../util/Spinner';
 
 const Login = () => {
   const [loading, setLoading] = useState(true);
-  const [loginLoading, setLoginLoad] = useState(false);
     const [form, setForm] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -38,8 +37,6 @@ const Login = () => {
             console.log("Error in log in", error);
             setError(error.response?.data?.error)
             setError("Failed to login");
-        } finally {
-          setLoading(false)
         }
     }
 
@@ -76,9 +73,7 @@ const Login = () => {
           }
           className='outline-0 border border-[#777d87] bg-[#ffffff] p-4 w-full rounded-xl'
         />
-        <button className='bg-[#0a0a0a] text-[#ffffff] cursor-pointer outline-0 p-4 w-full rounded-xl' onClick={handleLogin}>
-          {loading ? "loading" : "Login"}
-        </button>
+        <button className='bg-[#0a0a0a] text-[#ffffff] cursor-pointer outline-0 p-4 w-full rounded-xl' onClick={handleLogin}>Login</button>
         <p className='flex gap-3 justify-center items-center'>Already have an account
           <button className='cursor-pointer hover:text-green-500' onClick={() => navigate("/account")}>Register</button>
         </p> 
