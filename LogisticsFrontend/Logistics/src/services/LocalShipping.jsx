@@ -6,7 +6,7 @@ const LocalShipping = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   const [form, setForm] = useState({
     service_type: "",
@@ -60,6 +60,7 @@ const LocalShipping = () => {
 
       setStep(1);
       setForm({
+        vehicle: "",
         service_type: "",
         pickup_address: "",
         destination_address: "",
@@ -88,6 +89,26 @@ const LocalShipping = () => {
 
       {/* STEP 1 - SELECT SERVICE */}
       {step === 1 && (
+  <div>
+    <h2 className="text-xl mb-4">Select Vehicle</h2>
+
+    {["motorcycle", "minibus", "lorry", "truck"].map((v) => (
+      <button
+        key={v}
+        className={`border p-3 w-full mb-2 ${
+          form.vehicle === v ? "bg-blue-500 text-white" : ""
+        }`}
+        onClick={() => {
+          setForm({ ...form, vehicle: v });
+          setStep(2);
+        }}
+      >
+        {v.toUpperCase()}
+      </button>
+    ))}
+  </div>
+)}
+      {step === 2 && (
         <div>
           <h2 className="text-xl mb-4">Select Delivery Type</h2>
 
@@ -114,7 +135,7 @@ const LocalShipping = () => {
       )}
 
       {/* STEP 2 - ADDRESSES */}
-      {step === 2 && (
+      {step === 3 && (
         <div>
           <h2 className="text-xl mb-4">Pickup & Delivery</h2>
 
@@ -142,7 +163,7 @@ const LocalShipping = () => {
       )}
 
       {/* STEP 3 - REVIEW */}
-      {step === 3 && (
+      {step === 4 && (
         <div>
           <h2 className="text-xl mb-4">Review Shipment</h2>
 
@@ -158,7 +179,7 @@ const LocalShipping = () => {
       )}
 
       {/* STEP 4 - CONFIRM */}
-      {step === 4 && (
+      {step === 5 && (
         <div>
           <h2 className="text-xl mb-4">Confirm Shipment</h2>
 
