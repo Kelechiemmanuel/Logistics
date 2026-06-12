@@ -10,10 +10,10 @@ router.post('/create',
     roleMiddleware("customer"),
     createShipment);
 
-router.get('/track/:trackingId', 
-    authMiddleware,
-    roleMiddleware("customer"),
-    trackShipments
+// router.get('/track/:trackingId', 
+//     authMiddleware,
+//     roleMiddleware("customer"),
+//     trackShipments
 
-)
+// )
 module.exports = router;

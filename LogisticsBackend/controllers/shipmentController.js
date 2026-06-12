@@ -5,6 +5,7 @@ const { calculatePrice } = require('../Services/pricingService');
 
 const createShipment = async (req, res) => {
     const {
+        service_type,
         pickup_address,
         pickup_lat,
         pickup_lng,
@@ -29,13 +30,15 @@ const createShipment = async (req, res) => {
             destination_lng,
             weight,
             distance,
+            service_type,
             amount,
             customer_id
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
              RETURNING *
              `, 
              [
             tracking_id,
+            service_type,
             pickup_address,
             pickup_lat,
             pickup_lng,

@@ -4,6 +4,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');
 
 const { getMyShipments, trackShipments } = require('../controllers/customerController');
+const {createShipment } = require('../controllers/shipmentController')
 
 router.get('/shipments', 
     authMiddleware,
@@ -16,5 +17,10 @@ router.get('/track/:trackingId',
     roleMiddleware("customer"),
     trackShipments
 )
+
+// router.post('/create', 
+//     authMiddleware, 
+//     roleMiddleware("customer"),
+//     createShipment);
 
 module.exports = router;
