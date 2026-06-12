@@ -5,10 +5,10 @@ const pool = require('../config/db');
 const getMyShipments = async (req, res) => {
     const customerId = req.user.id;
     try {
-        const customer = await pool.query('SELECT * FROM shipments WHERE customer_id = $1', [customerId]);
+        const shipments = await pool.query('SELECT * FROM shipments WHERE customer_id = $1', [customerId]);
         return res.status(200).json({
             message: "Fetched shipments successfully",
-            shipments: customer.rows
+            shipments: shipments.rows
         })
     } catch (error) {
         console.log(error)
@@ -25,7 +25,7 @@ const trackShipments = async (req, res) => {
         const tracking = await pool.query('SELECT * FROM shipments WHERE tracking_id = $1', [trackingId]);
         return res.status(200).json({
             message: "shipment tracking fetched",
-            tracking: tracking.rows
+            tracking: tracking.rows[0]
         })
         
     } catch (error) {

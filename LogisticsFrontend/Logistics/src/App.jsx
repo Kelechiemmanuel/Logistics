@@ -13,6 +13,10 @@ import AdminDashboard from './protected/AdminDashboard';
 import CustomerDashboard from './protected/CustomerDashboard';
 import DriverDashboard from './protected/DriverDashboard'
 import Login from './pages/Login';
+import LocalShipping from './services/LocalShipping';
+import GlobalShipping from './services/GlobalShipping';
+import PersonalShopping from './services/PersonalShopping';
+import WareHousing from './services/WareHousing';
 
 const App = () => {
   return (
@@ -28,6 +32,10 @@ const App = () => {
 
           <Route path='/account' element={<Account />} />
           <Route path='/login' element={<Login />}/>
+          <Route path='/local/shipping' element={<LocalShipping />}/>
+          <Route path='/global/shipping' element={<GlobalShipping />}/>
+          <Route path='/personal/shopping' element={<PersonalShopping />}/>
+          <Route path='/ware/housing' element={<WareHousing />}/>
 
           <Route path='/admin/dashboard'
             element={
