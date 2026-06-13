@@ -144,6 +144,10 @@ const LocalShipping = () => {
           }} className="border p-3 w-full">
             Express
           </button>
+
+             <button onClick={() => setStep(1)} className="ml-3">
+            Back
+          </button>
         </div>
       )}
 
@@ -193,6 +197,9 @@ const LocalShipping = () => {
             onChange={handleChange}
             className="border p-2 w-full mb-2"
           />
+             <button onClick={() => setStep(2)} className="ml-3">
+            Back
+          </button>
 
           <button onClick={() => setStep(4)}>Continue</button>
         </div>
@@ -216,7 +223,9 @@ const LocalShipping = () => {
             onChange={handleChange}
             className="border p-2 w-full mb-2"
           />
-
+   <button onClick={() => setStep(3)} className="ml-3">
+            Back
+          </button>
           <button onClick={() => setStep(5)}>Continue</button>
         </div>
       )}
