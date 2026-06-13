@@ -38,7 +38,7 @@ const createShipment = async (req, res) => {
         tracking_id,
         customer_id,
         customer_name,
-        customer_phone,
+        phone,
         vehicle,
         service_type,
         pickup_address,
