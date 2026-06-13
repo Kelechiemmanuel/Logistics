@@ -9,6 +9,8 @@ const LocalShipping = () => {
 
   const [form, setForm] = useState({
     vehicle: "",
+    customer_name: "",
+    phone: "",
     service_type: "",
     pickup_address: "",
     pickup_lat: "",
