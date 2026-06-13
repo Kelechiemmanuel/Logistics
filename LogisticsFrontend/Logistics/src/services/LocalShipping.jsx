@@ -57,7 +57,6 @@ const LocalShipping = () => {
       !form.service_type ||
       !form.pickup_address ||
       !form.destination_address ||
-      !form.receiver_address ||
       !form.receiver_phone ||
       !form.receiver_name ||
       !form.weight ||
