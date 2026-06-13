@@ -13,6 +13,8 @@ const createShipment = async (req, res) => {
         destination_address,
         destination_lat,
         destination_lng,
+        receiver_address,
+        receiver_phone,
         weight,
         distance
     } = req.body;
@@ -47,10 +49,12 @@ const createShipment = async (req, res) => {
         destination_address,
         destination_lat,
         destination_lng,
+        receiver_address,
+        receiver_phone,
         weight,
         distance,
         amount
-  ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13, $14, $15)
+  ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13, $14, $15, $16, $17)
   RETURNING *
 `, [
             tracking_id,
@@ -65,6 +69,8 @@ const createShipment = async (req, res) => {
             destination_address,
             destination_lat,
             destination_lng,
+            receiver_address,
+            receiver_phone,
             weight,
             distance,
             amount

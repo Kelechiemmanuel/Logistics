@@ -21,9 +21,6 @@ const LocalShipping = () => {
   });
   const user = JSON.parse(localStorage.getItem("user"));
 
-console.log(user.fullname);
-console.log(user.phone);
-
   const totalSteps = 7;
 
   const ProgressBar = () => (
@@ -265,6 +262,7 @@ console.log(user.phone);
               </div> */}
 
               <div className="flex gap-2 justify-center items-center">
+                <p>address: {form.pickup_address}</p>
                 <p>Name: {user.fullname}</p>
                 <p>Phone: {user.phone}</p>
                 <input
