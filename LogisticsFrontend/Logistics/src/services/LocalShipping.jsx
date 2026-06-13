@@ -6,17 +6,21 @@ const LocalShipping = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const totalSteps = 5;
-
   const [form, setForm] = useState({
+    vehicle: "",
     service_type: "",
     pickup_address: "",
+    pickup_lat: "",
+    pickup_lng: "",
     destination_address: "",
+    destination_lat: "",
+    destination_lng: "",
     weight: "",
     distance: ""
   });
 
-  // Progress bar
+  const totalSteps = 5;
+
   const ProgressBar = () => (
     <div className="w-full mb-6">
       <div className="flex justify-between text-sm mb-2">
@@ -26,7 +30,7 @@ const LocalShipping = () => {
 
       <div className="w-full bg-gray-200 h-2 rounded-full">
         <div
-          className="bg-blue-600 h-2 rounded-full transition-all"
+          className="bg-blue-600 h-2 rounded-full"
           style={{ width: `${(step / totalSteps) * 100}%` }}
         />
       </div>
@@ -34,20 +38,34 @@ const LocalShipping = () => {
   );
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // FINAL API CALL
   const handleSubmit = async () => {
     setLoading(true);
     setMessage("");
 
+    // ✅ validation before sending
+    if (
+      !form.vehicle ||
+      !form.service_type ||
+      !form.pickup_address ||
+      !form.destination_address ||
+      !form.weight ||
+      !form.distance
+    ) {
+      setMessage("Please fill all required fields");
+      setLoading(false);
+      return;
+    }
+
     try {
       const payload = {
         ...form,
+        pickup_lat: Number(form.pickup_lat),
+        pickup_lng: Number(form.pickup_lng),
+        destination_lat: Number(form.destination_lat),
+        destination_lng: Number(form.destination_lng),
         weight: Number(form.weight),
         distance: Number(form.distance)
       };
@@ -63,7 +81,11 @@ const LocalShipping = () => {
         vehicle: "",
         service_type: "",
         pickup_address: "",
+        pickup_lat: "",
+        pickup_lng: "",
         destination_address: "",
+        destination_lat: "",
+        destination_lng: "",
         weight: "",
         distance: ""
       });
@@ -78,125 +100,145 @@ const LocalShipping = () => {
   return (
     <div className="p-10 max-w-2xl mx-auto">
 
-      {/* PROGRESS BAR */}
       <ProgressBar />
 
       {message && (
-        <p className="mb-4 text-green-600 font-medium">
-          {message}
-        </p>
+        <p className="mb-4 text-green-600 font-medium">{message}</p>
       )}
 
-      {/* STEP 1 - SELECT SERVICE */}
+      {/* STEP 1 - VEHICLE */}
       {step === 1 && (
-  <div>
-    <h2 className="text-xl mb-4">Select Vehicle</h2>
+        <div>
+          <h2>Select Vehicle</h2>
 
-    {["motorcycle", "minibus", "lorry", "truck"].map((v) => (
-      <button
-        key={v}
-        className={`border p-3 w-full mb-2 ${
-          form.vehicle === v ? "bg-blue-500 text-white" : ""
-        }`}
-        onClick={() => {
-          setForm({ ...form, vehicle: v });
-          setStep(2);
-        }}
-      >
-        {v.toUpperCase()}
-      </button>
-    ))}
-  </div>
-)}
+          {["motorcycle", "minibus", "lorry", "truck"].map((v) => (
+            <button
+              key={v}
+              onClick={() => {
+                setForm({ ...form, vehicle: v });
+                setStep(2);
+              }}
+              className="border p-3 w-full mb-2"
+            >
+              {v.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* STEP 2 - SERVICE */}
       {step === 2 && (
         <div>
-          <h2 className="text-xl mb-4">Select Delivery Type</h2>
+          <h2>Select Service</h2>
 
-          <button
-            className="border p-3 w-full mb-3"
-            onClick={() => {
-              setForm({ ...form, service_type: "standard" });
-              setStep(2);
-            }}
-          >
-            Standard Delivery
+          <button onClick={() => {
+            setForm({ ...form, service_type: "standard" });
+            setStep(3);
+          }} className="border p-3 w-full mb-2">
+            Standard
           </button>
 
-          <button
-            className="border p-3 w-full"
-            onClick={() => {
-              setForm({ ...form, service_type: "express" });
-              setStep(2);
-            }}
-          >
-            Express Delivery
+          <button onClick={() => {
+            setForm({ ...form, service_type: "express" });
+            setStep(3);
+          }} className="border p-3 w-full">
+            Express
           </button>
         </div>
       )}
 
-      {/* STEP 2 - ADDRESSES */}
+      {/* STEP 3 - ADDRESS */}
       {step === 3 && (
         <div>
-          <h2 className="text-xl mb-4">Pickup & Delivery</h2>
+          <h2>Pickup & Destination</h2>
 
           <input
             name="pickup_address"
             placeholder="Pickup Address"
-            value={form.pickup_address}
             onChange={handleChange}
-            className="border p-2 w-full mb-3"
+            className="border p-2 w-full mb-2"
+          />
+
+          <input
+            name="pickup_lat"
+            placeholder="Pickup Latitude"
+            onChange={handleChange}
+            className="border p-2 w-full mb-2"
+          />
+
+          <input
+            name="pickup_lng"
+            placeholder="Pickup Longitude"
+            onChange={handleChange}
+            className="border p-2 w-full mb-2"
           />
 
           <input
             name="destination_address"
             placeholder="Destination Address"
-            value={form.destination_address}
             onChange={handleChange}
-            className="border p-2 w-full mb-3"
+            className="border p-2 w-full mb-2"
           />
 
-          <div className="flex justify-between">
-            <button onClick={() => setStep(1)}>Back</button>
-            <button onClick={() => setStep(3)}>Continue</button>
-          </div>
+          <input
+            name="destination_lat"
+            placeholder="Destination Latitude"
+            onChange={handleChange}
+            className="border p-2 w-full mb-2"
+          />
+
+          <input
+            name="destination_lng"
+            placeholder="Destination Longitude"
+            onChange={handleChange}
+            className="border p-2 w-full mb-2"
+          />
+
+          <button onClick={() => setStep(4)}>Continue</button>
         </div>
       )}
 
-      {/* STEP 3 - REVIEW */}
+      {/* STEP 4 - DETAILS */}
       {step === 4 && (
         <div>
-          <h2 className="text-xl mb-4">Review Shipment</h2>
+          <h2>Package Details</h2>
 
-          <p><b>Type:</b> {form.service_type}</p>
-          <p><b>Pickup:</b> {form.pickup_address}</p>
-          <p><b>Destination:</b> {form.destination_address}</p>
+          <input
+            name="weight"
+            placeholder="Weight"
+            onChange={handleChange}
+            className="border p-2 w-full mb-2"
+          />
 
-          <div className="flex justify-between mt-4">
-            <button onClick={() => setStep(2)}>Back</button>
-            <button onClick={() => setStep(4)}>Confirm</button>
-          </div>
+          <input
+            name="distance"
+            placeholder="Distance"
+            onChange={handleChange}
+            className="border p-2 w-full mb-2"
+          />
+
+          <button onClick={() => setStep(5)}>Continue</button>
         </div>
       )}
 
-      {/* STEP 4 - CONFIRM */}
+      {/* STEP 5 - CONFIRM */}
       {step === 5 && (
         <div>
-          <h2 className="text-xl mb-4">Confirm Shipment</h2>
+          <h2>Confirm Shipment</h2>
 
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="bg-blue-600 text-white px-4 py-2 disabled:opacity-50"
+            className="bg-blue-600 text-white px-4 py-2"
           >
             {loading ? "Creating..." : "Create Shipment"}
           </button>
 
-          <button className="ml-3" onClick={() => setStep(3)}>
+          <button onClick={() => setStep(4)} className="ml-3">
             Back
           </button>
         </div>
       )}
-
     </div>
   );
 };
