@@ -20,7 +20,7 @@ const LocalShipping = () => {
     distance: ""
   });
 
-  const totalSteps = 6;
+  const totalSteps = 7;
 
   const ProgressBar = () => (
     <div className="w-full mb-6">
@@ -246,13 +246,41 @@ const LocalShipping = () => {
           </div>
         )}
 
-        {/* STEP 4 - DETAILS */}
         {step === 4 && (
+          <div>
+            <h2 className="text-center py-5">Sender's Details</h2>
+            <div className="grid grid-cols-2 gap-5">
+              {/* <div className="flex gap-2 justify-center items-center">
+                <Weight size={24} fill="black" />
+                <input
+                  name="phone"
+                  placeholder="phone"
+                  onChange={handleChange}
+                  className="border-0 p-2 w-full mb-2 bg-[#f3f4f6] rounded-sm"
+                />
+              </div> */}
+
+              <div className="flex gap-2 justify-center items-center">
+                <p>Name: {user.fullname}</p>
+                <p>Phone: {user.phone}</p>
+                <input
+                  name="fullname"
+                  placeholder="fullname"
+                  onChange={handleChange}
+                  className="border-0 p-2 w-full mb-2 bg-[#f3f4f6] rounded-sm"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* STEP 4 - DETAILS */}
+        {step === 5 && (
           <div>
             <h2 className="text-center py-5">Package Details</h2>
             <div className="grid grid-cols-2 gap-5">
               <div className="flex gap-2 justify-center items-center">
-                <Weight size={24} fill="black"/>
+                <Weight size={24} fill="black" />
                 <input
                   name="weight"
                   placeholder="Weight"
@@ -262,7 +290,7 @@ const LocalShipping = () => {
               </div>
 
               <div className="flex gap-2 justify-center items-center">
-                <Route size={24} fill="black"/>
+                <Route size={24} fill="black" />
                 <input
                   name="distance"
                   placeholder="Distance"
@@ -272,13 +300,13 @@ const LocalShipping = () => {
               </div>
             </div>
             <div className="flex justify-between">
-              <button onClick={() => setStep(3)} className="ml-3">Back</button>
-              <button onClick={() => setStep(5)}>Continue</button>
+              <button onClick={() => setStep(4)} className="ml-3">Back</button>
+              <button onClick={() => setStep(6)}>Continue</button>
             </div>
           </div>
         )}
 
-        {step === 5 && (
+        {step === 6 && (
           <div>
             <h2 className="text-xl mb-4">Review</h2>
 
@@ -288,8 +316,8 @@ const LocalShipping = () => {
             <p>Destination: {form.destination_address}</p>
 
             <div className="flex justify-between py-5">
-              <button onClick={() => setStep(4)} className="ml-3">Back</button>
-              <button onClick={() => setStep(6)} disabled={loading}>
+              <button onClick={() => setStep(5)} className="ml-3">Back</button>
+              <button onClick={() => setStep(7)} disabled={loading}>
                 {loading ? "loading" : "Continue"}
               </button>
             </div>
@@ -297,7 +325,7 @@ const LocalShipping = () => {
         )}
 
         {/* STEP 5 - CONFIRM */}
-        {step === 6 && (
+        {step === 7 && (
           <div>
             <h2>Confirm Shipment</h2>
 
@@ -309,7 +337,7 @@ const LocalShipping = () => {
               {loading ? "Creating..." : "Create Shipment"}
             </button>
 
-            <button onClick={() => setStep(5)} className="ml-3">
+            <button onClick={() => setStep(6)} className="ml-3">
               Back
             </button>
           </div>
