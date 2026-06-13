@@ -16,6 +16,8 @@ const LocalShipping = () => {
     destination_address: "",
     destination_lat: "",
     destination_lng: "",
+    receiver_address: "",
+    receiver_phone: "",
     weight: "",
     distance: ""
   });
@@ -52,6 +54,8 @@ const LocalShipping = () => {
       !form.service_type ||
       !form.pickup_address ||
       !form.destination_address ||
+      !form.receiver_address ||
+      !form.receiver_phone ||
       !form.weight ||
       !form.distance
     ) {
@@ -87,6 +91,8 @@ const LocalShipping = () => {
         destination_address: "",
         destination_lat: "",
         destination_lng: "",
+        receiver_address: "",
+        receiver_phone: "",
         weight: "",
         distance: ""
       });
@@ -266,8 +272,14 @@ const LocalShipping = () => {
                 <p>Name: {user.fullname}</p>
                 <p>Phone: {user.phone}</p>
                 <input
-                  name="fullname"
-                  placeholder="fullname"
+                  name="receiver_address"
+                  placeholder="Address"
+                  onChange={handleChange}
+                  className="border-0 p-2 w-full mb-2 bg-[#f3f4f6] rounded-sm"
+                />
+                <input
+                  name="receiver_phone"
+                  placeholder="Phone Number"
                   onChange={handleChange}
                   className="border-0 p-2 w-full mb-2 bg-[#f3f4f6] rounded-sm"
                 />
