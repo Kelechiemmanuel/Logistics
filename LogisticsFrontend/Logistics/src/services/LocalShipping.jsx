@@ -59,6 +59,7 @@ const LocalShipping = () => {
       !form.destination_address ||
       !form.receiver_address ||
       !form.receiver_phone ||
+      !form.receiver_name ||
       !form.weight ||
       !form.distance
     ) {
@@ -271,7 +272,7 @@ const LocalShipping = () => {
               <div>
                  <p>Address 2</p>
                   <input
-                  name="receiver_address"
+                  name="sender_address_2"
                   placeholder="Address 2 (Optional)"
                   onChange={handleChange}
                   className="border-0 p-2 w-full h-20 mb-2 bg-[#f3f4f6] rounded-sm"
@@ -297,7 +298,7 @@ const LocalShipping = () => {
               <div>
                  <p>Address 2</p>
                   <input
-                  name="receiver_address"
+                  name="receiver_address_2"
                   placeholder="Address 2 (Optional)"
                   onChange={handleChange}
                   className="border-0 p-2 w-full h-20 mb-2 bg-[#f3f4f6] rounded-sm"
