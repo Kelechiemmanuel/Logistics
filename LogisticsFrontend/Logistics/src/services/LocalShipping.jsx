@@ -284,7 +284,7 @@ const LocalShipping = () => {
               </div>
               <div>
                 <p>Sender's Number</p>
-                <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-star">{user.phone}</p>
+                <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-start">{user.phone}</p>
               </div>
             </div>
 
