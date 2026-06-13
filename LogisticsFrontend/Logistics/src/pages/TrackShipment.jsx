@@ -33,19 +33,22 @@ const TrackShipment = () => {
     {message}
   </p>
 )}
-      <input placeholder='Enter tracking number'
-        onChange={(e) => setTrackingId(e.target.value)}
-      />
-      <button onClick={trackShipments}>Track</button>
+ <input
+  placeholder="Enter tracking number"
+  value={trackingId}
+  onChange={(e) => setTrackingId(e.target.value)}
+/>
 
-      {shipment && (
-        <div>
-          <p>status:{shipment.status}</p>
-          <p>Pick up: {shipment.pickup_address}</p>
-          <p>Destination: {shipment.destination_address}</p>
-          <p>Amount: {shipment.amount}</p>
-        </div>
-      )}
+<button onClick={trackShipments}>Track</button>
+
+{shipment && (
+  <div>
+    <p>status: {shipment.status}</p>
+    <p>Pick up: {shipment.pickup_address}</p>
+    <p>Destination: {shipment.destination_address}</p>
+    <p>Amount: {shipment.amount}</p>
+  </div>
+)}
     </section>
   )
 }
