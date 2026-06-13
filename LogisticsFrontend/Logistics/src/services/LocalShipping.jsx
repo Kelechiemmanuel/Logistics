@@ -78,6 +78,8 @@ const LocalShipping = () => {
 
       setStep(1);
       setForm({
+        customer_name: "",
+        phone: "",
         vehicle: "",
         service_type: "",
         pickup_address: "",
