@@ -263,8 +263,8 @@ const LocalShipping = () => {
               </div> */}
 
               <div className="flex gap-2 justify-center items-center">
-                <p>Name: {user.fullname}</p>
-                <p>Phone: {user.phone}</p>
+                <p>Name: {form.customer_name}</p>
+                <p>Phone: {form.phone}</p>
                 <input
                   name="fullname"
                   placeholder="fullname"
