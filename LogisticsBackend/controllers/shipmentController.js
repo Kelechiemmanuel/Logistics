@@ -30,7 +30,7 @@ const createShipment = async (req, res) => {
             })
         }
         const customer_name = customer.rows[0].fullname;
-        const phone = customer.rows[0].phone;
+        const customer_phone = customer.rows[0].phone;
         const tracking_id = generateTrackingId();
         const amount = calculatePrice(distance, weight);
         const shipment = await pool.query(`
@@ -38,7 +38,7 @@ const createShipment = async (req, res) => {
         tracking_id,
         customer_id,
         customer_name,
-        phone,
+        customer_phone,
         vehicle,
         service_type,
         pickup_address,
@@ -56,7 +56,7 @@ const createShipment = async (req, res) => {
             tracking_id,
             req.user.id,
             customer_name,
-            phone,
+            customer_phone,
             vehicle,
             service_type,
             pickup_address,
