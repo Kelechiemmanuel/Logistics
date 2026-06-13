@@ -19,6 +19,10 @@ const LocalShipping = () => {
     weight: "",
     distance: ""
   });
+  const user = JSON.parse(localStorage.getItem("user"));
+
+console.log(user.fullname);
+console.log(user.phone);
 
   const totalSteps = 7;
 

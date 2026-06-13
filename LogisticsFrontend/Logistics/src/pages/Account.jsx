@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import API from '../api/api'
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../util/Spinner'
+import { Phone } from 'lucide-react'
 
 
 const Account = () => {
@@ -11,6 +12,7 @@ const Account = () => {
   const [form, setForm] = useState({
     fullname: "",
     email: "",
+    Phone: "",
     password: ""
   });
 
@@ -59,6 +61,13 @@ if (loading) return <Spinner />
           placeholder="Email"
           onChange={(e) =>
             setForm({ ...form, email: e.target.value })
+          }
+          className='outline-0 border border-[#777d87] bg-[#ffffff] p-4 w-full rounded-xl'
+        />
+        <input
+          placeholder="Phone Number"
+          onChange={(e) =>
+            setForm({ ...form, Phone: e.target.value })
           }
           className='outline-0 border border-[#777d87] bg-[#ffffff] p-4 w-full rounded-xl'
         />

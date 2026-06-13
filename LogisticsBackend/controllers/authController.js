@@ -4,10 +4,10 @@ const pool = require('../config/db');
 
 //REGISTER A USER
 const register = async (req, res) => {
-    const { fullname, email, password } = req.body;
+    const { fullname, email, phone, password } = req.body;
 
             // Checking if the input fields are empty
-        if (!fullname || !email || !password) {
+        if (!fullname || !email || phone || !password) {
             return res.status(400).json({
                 message: "Please fill in the fields"
             })
@@ -22,7 +22,7 @@ const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const result = await pool.query(`
-            INSERT INTO users (fullname, email, password) VALUES ($1, $2, $3) RETURNING *
+            INSERT INTO users (fullname, email, phone, password) VALUES ($1, $2, $3, $4) RETURNING *
         `, [fullname.toLowerCase().trim(), email.toLowerCase().trim(), hashedPassword]);
         return res.status(200).json({
             message: "User Created Successfully",
