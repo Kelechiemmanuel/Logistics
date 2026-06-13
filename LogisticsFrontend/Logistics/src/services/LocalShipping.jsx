@@ -18,6 +18,9 @@ const LocalShipping = () => {
     destination_lng: "",
     receiver_address: "",
     receiver_phone: "",
+    receiver_name: "",
+    receiver_address_2: "",
+    sender_address_2: "",
     weight: "",
     distance: ""
   });
@@ -93,6 +96,9 @@ const LocalShipping = () => {
         destination_lng: "",
         receiver_address: "",
         receiver_phone: "",
+        receiver_name: "",
+        receiver_address_2: "",
+        sender_address_2: "",
         weight: "",
         distance: ""
       });
@@ -256,34 +262,70 @@ const LocalShipping = () => {
         {step === 4 && (
           <div>
             <h2 className="text-center py-5">Sender's Details</h2>
-            <div className="grid grid-cols-2 gap-5">
-              {/* <div className="flex gap-2 justify-center items-center">
-                <Weight size={24} fill="black" />
-                <input
-                  name="phone"
-                  placeholder="phone"
-                  onChange={handleChange}
-                  className="border-0 p-2 w-full mb-2 bg-[#f3f4f6] rounded-sm"
-                />
-              </div> */}
 
-              <div className="flex gap-2 justify-center items-center">
-                <p>address: {form.pickup_address}</p>
-                <p>Name: {user.fullname}</p>
-                <p>Phone: {user.phone}</p>
-                <input
+            <div className="grid grid-cols-2 gap-5">
+              <div className="w-full">
+                <p>Address 1</p>
+                <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-start">{form.pickup_address}</p>
+              </div>
+              <div>
+                 <p>Address 2</p>
+                  <input
                   name="receiver_address"
-                  placeholder="Address"
+                  placeholder="Address 2 (Optional)"
                   onChange={handleChange}
-                  className="border-0 p-2 w-full mb-2 bg-[#f3f4f6] rounded-sm"
+                  className="border-0 p-2 w-full h-20 mb-2 bg-[#f3f4f6] rounded-sm"
                 />
+              </div>
+              <div>
+                <p>Sender's Name</p>
+                <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-start">{user.fullname}</p>
+              </div>
+              <div>
+                <p>Sender's Number</p>
+                <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-star">{user.phone}</p>
+              </div>
+            </div>
+
+            <div className="py-10">
+              <h1 className="text-center py-5">Receiver's Details</h1>
+              <div className="grid grid-cols-2 gap-5">
+              <div className="w-full">
+                <p>Address 1</p>
+                <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-star">{form.destination_address}</p>
+              </div>
+              <div>
+                 <p>Address 2</p>
+                  <input
+                  name="receiver_address"
+                  placeholder="Address 2 (Optional)"
+                  onChange={handleChange}
+                  className="border-0 p-2 w-full h-20 mb-2 bg-[#f3f4f6] rounded-sm"
+                />
+              </div>
+              <div>
+                 <p>Receiver's Name</p>
+                  <input
+                  name="receiver_name"
+                  placeholder="Receiver's Name"
+                  onChange={handleChange}
+                  className="border-0 p-2 w-full h-20 mb-2 bg-[#f3f4f6] rounded-sm"
+                />
+              </div>
+              <div>
+                <p>Receiver's Number</p>
                 <input
                   name="receiver_phone"
                   placeholder="Phone Number"
                   onChange={handleChange}
-                  className="border-0 p-2 w-full mb-2 bg-[#f3f4f6] rounded-sm"
+                  className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm"
                 />
               </div>
+              </div>
+              <div className="flex justify-between">
+              <button onClick={() => setStep(3)} className="ml-3">Back</button>
+              <button onClick={() => setStep(5)}>Continue</button>
+            </div>
             </div>
           </div>
         )}
