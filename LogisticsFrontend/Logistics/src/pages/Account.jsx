@@ -9,12 +9,12 @@ const Account = () => {
   const [loading, setLoading] = useState(true)
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-  const [form, setForm] = useState({
-    fullname: "",
-    email: "",
-    Phone: "",
-    password: ""
-  });
+const [form, setForm] = useState({
+  fullname: "",
+  email: "",
+  phone: "",
+  password: ""
+});
 
   const navigate = useNavigate();
 
@@ -67,7 +67,7 @@ if (loading) return <Spinner />
         <input
           placeholder="Phone Number"
           onChange={(e) =>
-            setForm({ ...form, Phone: e.target.value })
+            setForm({ ...form, phone: e.target.value })
           }
           className='outline-0 border border-[#777d87] bg-[#ffffff] p-4 w-full rounded-xl'
         />
