@@ -152,7 +152,7 @@ const LocalShipping = () => {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Select Vehicle</h2>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               {vehicles.map((v) => (
                 <button
                   key={v.type}
@@ -202,7 +202,7 @@ const LocalShipping = () => {
         {step === 3 && (
           <div>
             <h2 className="text-center py-5">Pickup & Destination</h2>
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-5">
               <div className="flex gap-2 justify-center items-center">
                 <Navigation size={22} fill="black" />
                 <input
@@ -263,7 +263,7 @@ const LocalShipping = () => {
           <div>
             <h2 className="text-center py-5">Sender's Details</h2>
 
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-5">
               <div className="w-full">
                 <p>Address 1</p>
                 <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-start">{form.pickup_address}</p>
@@ -289,7 +289,7 @@ const LocalShipping = () => {
 
             <div className="py-10">
               <h1 className="text-center py-5">Receiver's Details</h1>
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid md:grid-cols-2 gap-5">
               <div className="w-full">
                 <p>Address 1</p>
                 <p className="border-0 p-2 h-20 w-full mb-2 bg-[#f3f4f6] rounded-sm flex items-center justify-star">{form.destination_address}</p>
@@ -334,7 +334,7 @@ const LocalShipping = () => {
         {step === 5 && (
           <div>
             <h2 className="text-center py-5">Package Details</h2>
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-5">
               <div className="flex gap-2 justify-center items-center">
                 <Weight size={24} fill="black" />
                 <input
