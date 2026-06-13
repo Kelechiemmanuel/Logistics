@@ -7,7 +7,7 @@ const register = async (req, res) => {
     const { fullname, email, phone, password } = req.body;
 
             // Checking if the input fields are empty
-        if (!fullname || !email || phone || !password) {
+        if (!fullname || !email || !phone || !password) {
             return res.status(400).json({
                 message: "Please fill in the fields"
             })
