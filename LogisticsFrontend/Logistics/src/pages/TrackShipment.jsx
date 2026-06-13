@@ -10,7 +10,7 @@ const TrackShipment = () => {
   const [message, setMessage] = useState("")
 
   const trackShipments = async () => {
-    if(!trackingId){
+    if (!trackingId) {
       setMessage("Please enter tracking ID");
       return;
     }
@@ -29,26 +29,28 @@ const TrackShipment = () => {
   return (
     <section className="relative w-full h-[50%] overflow-hidden bg-transparent p-30">
       {message && (
-  <p className="text-blue-600 font-medium mb-3">
-    {message}
-  </p>
-)}
- <input
-  placeholder="Enter tracking number"
-  value={trackingId}
-  onChange={(e) => setTrackingId(e.target.value)}
-/>
+        <p className="text-blue-600 font-medium mb-3">
+          {message}
+        </p>
+      )}
+      <input
+        placeholder="Enter tracking number"
+        value={trackingId}
+        onChange={(e) => setTrackingId(e.target.value)}
+      />
 
-<button onClick={trackShipments}>Track</button>
+      <button onClick={trackShipments}>Track</button>
 
-{shipment && (
-  <div>
-    <p>status: {shipment.status}</p>
-    <p>Pick up: {shipment.pickup_address}</p>
-    <p>Destination: {shipment.destination_address}</p>
-    <p>Amount: {shipment.amount}</p>
-  </div>
-)}
+      {shipment && (
+        <div>
+          <p>Vehicle: {shipment.vehicle}</p>
+          <p>Service: {shipment.service_type}</p>
+          <p>status: {shipment.status}</p>
+          <p>Pick up: {shipment.pickup_address}</p>
+          <p>Destination: {shipment.destination_address}</p>
+          <p>Amount: {shipment.amount}</p>
+        </div>
+      )}
     </section>
   )
 }
