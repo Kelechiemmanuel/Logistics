@@ -14,16 +14,17 @@ const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
     return (
         <div>
-            <nav className=' flex justify-between items-center p-10'>
+            <nav className=' flex justify-between items-center p-10 md:p-10'>
                 <div>
                     <h1>Logistics</h1>
                 </div>
 
                 <NavLink />
-                <div className='hidden md:block'>
+                <div className='hidden md:block '>
                     <div className='flex gap-3'>
+                        <Link to='/account' className='flex'> 
                         <CircleUser />
-                        <Link to='/account'>Account</Link>
+                        Account</Link>
                     </div>
                 </div>
             </nav>

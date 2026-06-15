@@ -34,7 +34,7 @@ const CustomerDashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='p-30 bg-[#f3f4f6]'>
+    <div className='px-5 md:px-20 py-20 bg-[#f3f4f6]'>
       <h1 className='text-center mb-10 text-6xl'>SEAMLESS DELIVERY SERVICES</h1>
       <div className='grid md:grid-cols-2 lg:grid-cols-4 cursor-pointer'>
         {services.map((service, id) => (
