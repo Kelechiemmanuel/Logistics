@@ -55,7 +55,7 @@ const Login = () => {
     if(loading) return <Spinner />
     return (
     <div className='flex justify-center items-center h-screen bg-[#f3f4f6]'>
-    <div className='flex justify-center items-center w-[45%] p-10'>
+    <div className='flex justify-center items-center w-full md:w-[45%] p-10'>
       <div className=" flex flex-col gap-8 text-center w-full p-10 text-[#777d87] text-xl">
         <h2 className='text-4xl font-bold'>Login</h2>
         {success && <p className="text-green-500">{success}</p>}

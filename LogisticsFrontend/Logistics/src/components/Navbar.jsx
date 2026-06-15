@@ -1,26 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+
+import { Link } from 'react-router-dom';
+import { CircleUser, Menu, X } from "lucide-react";
+import { useState } from 'react';
+import NavLink from './NavLink';
+import Home from '../pages/Home';
+import Offices from '../pages/Offices';
+import Services from '../pages/Services';
+import Contacts from '../pages/Contacts';
+import About from '../pages/About';
+import Account from '../pages/Account';
 
 const Navbar = () => {
-  return (
-    <div>
-        <nav className=' flex justify-between items-center p-10'>
-            <div>
-                <h1>Logistics</h1>
-            </div>
-            <ul className='flex gap-10'>
-                <Link to='/'>Home</Link>
-                <Link to='/services'>Services</Link>
-                <Link to='/offices'>Offices</Link>
-                <Link to='/contacts'>Contacts</Link>
-                <Link to='/about'>About</Link>
-            </ul>
-            <div>
-                <Link to='/account'>Account</Link>
-            </div>
-        </nav>
-    </div>
-  )
+    const [openMenu, setOpenMenu] = useState(false);
+    return (
+        <div>
+            <nav className=' flex justify-between items-center p-10'>
+                <div>
+                    <h1>Logistics</h1>
+                </div>
+
+                <NavLink />
+                <div className='hidden md:block'>
+                    <div className='flex gap-3'>
+                        <CircleUser />
+                        <Link to='/account'>Account</Link>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    )
 }
 
 export default Navbar
