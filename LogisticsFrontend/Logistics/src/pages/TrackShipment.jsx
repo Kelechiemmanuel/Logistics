@@ -38,7 +38,7 @@ const TrackShipment = () => {
       />
       <div className='flex justify-center items-center relative z-10 h-80'>
         <div className='w-full'>
-          <p className="text-red-700 font-medium mb-3">
+          <p className="text-green-700 font-medium mb-3">
             {message}
           </p>
           <p className='text-[#BDD9D7] font-medium mb-5 md:text-3xl'>Track Shipment</p>
@@ -49,13 +49,24 @@ const TrackShipment = () => {
             />
             <button onClick={trackShipments} className='bg-[#093856] p-4 rounded-r-lg text-[#BDD9D7] cursor-pointer transition'>Track</button>
           </div>
+
+          {shipment && (
+            <div className='text-white'>
+              <p>Vehicle: {shipment.vehicle}</p>
+              <p>Service: {shipment.service_type}</p>
+              <p>status: {shipment.status}</p>
+              <p>Pick up: {shipment.pickup_address}</p>
+              <p>Destination: {shipment.destination_address}</p>
+              <p>Amount: {shipment.amount}</p>
+            </div>
+          )}
         </div>
       </div>
 
 
 
-      {shipment && (
-        <div>
+      {/* {shipment && (
+        <div className='text-white'>
           <p>Vehicle: {shipment.vehicle}</p>
           <p>Service: {shipment.service_type}</p>
           <p>status: {shipment.status}</p>
@@ -63,7 +74,7 @@ const TrackShipment = () => {
           <p>Destination: {shipment.destination_address}</p>
           <p>Amount: {shipment.amount}</p>
         </div>
-      )}
+      )} */}
     </section>
   )
 }
