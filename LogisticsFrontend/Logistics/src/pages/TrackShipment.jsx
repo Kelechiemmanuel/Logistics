@@ -27,19 +27,32 @@ const TrackShipment = () => {
   }
 
   return (
-    <section className="relative w-full h-[50%] overflow-hidden bg-transparent p-30">
-      {message && (
-        <p className="text-blue-600 font-medium mb-3">
-          {message}
-        </p>
-      )}
-      <input
-        placeholder="Enter tracking number"
-        value={trackingId}
-        onChange={(e) => setTrackingId(e.target.value)}
+    <section className="relative w-full h-[50%] p-10">
+      <div className="absolute inset-0 z-0 bg-black/80"
+        style={{
+          backgroundImage: `
+      linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.3)),
+      url(${shipping})
+    `,
+        }}
       />
+      <div className='flex justify-center items-center relative z-10 h-80'>
+        <div className='w-full'>
+          <p className="text-red-700 font-medium mb-3">
+            {message}
+          </p>
+          <p className='text-[#BDD9D7] font-medium mb-5 md:text-3xl'>Track Shipment</p>
+          <div className='flex justify-between items-center outline-0 bg-[#BDD9D7] w-full md:w-[50%] rounded-lg pl-3'>
+            <input placeholder="Enter tracking number" value={trackingId}
+              onChange={(e) => setTrackingId(e.target.value)}
+              className='w-full'
+            />
+            <button onClick={trackShipments} className='bg-[#093856] p-4 rounded-r-lg text-[#BDD9D7]'>Track</button>
+          </div>
+        </div>
+      </div>
 
-      <button onClick={trackShipments}>Track</button>
+
 
       {shipment && (
         <div>

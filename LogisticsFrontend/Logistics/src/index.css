@@ -3,3 +3,16 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.slide-track {
+  animation: scroll 20s linear infinite;
+}

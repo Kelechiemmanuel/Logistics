@@ -7,6 +7,7 @@ import planeImg from "../assets/plane.jpg";
 import shipImg from "../assets/ship.jpg";
 // import warehouse from "../assets/warehouse.jpg"
 import TrackShipment from "./TrackShipment";
+import PartnerShip from "./PartnerShip";
 
 const slides = [
   {
@@ -75,7 +76,7 @@ export default function Home() {
       </AnimatePresence>
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-[#3447AA]/80" />
+      <div className="absolute inset-0 bg-[#093856]/80" />
 
       {/* CONTENT */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-5">
@@ -87,7 +88,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <ActiveIcon size={50} className="text-[#FBEAEB] mb-4" />
+          <ActiveIcon size={50} className="text-[#BDD9D7] mb-4" />
         </motion.div>
 
         {/* TITLE */}
@@ -96,7 +97,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold text-[#FBEAEB]"
+          className="text-4xl md:text-6xl font-bold text-[#BDD9D7]"
         >
           {slides[current].title}
         </motion.h1>
@@ -107,13 +108,13 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-4 text-[#FBEAEB]"
+          className="mt-4 text-[#BDD9D7]"
         >
           {slides[current].subtitle}
         </motion.p>
 
         {/* CTA */}
-        <button className="mt-8 px-6 py-3 bg-[#FBEAEB] text-[#3447AA] rounded-full">
+        <button className="mt-8 px-6 py-3 bg-[#BDD9D7] text-[#093856] rounded-full">
           Discover More
         </button>
 
@@ -136,8 +137,8 @@ export default function Home() {
                   ${isActive ? "bg-white/20" : "bg-white/5"}
                 `}
               >
-                <Icon size={40} className="text-white" />
-                <h3 className="mt-4 font-bold text-white">
+                <Icon size={40} className="text-[#BDD9D7]" />
+                <h3 className="mt-4 font-bold text-[#BDD9D7]">
                   {item.title}
                 </h3>
               </motion.div>
@@ -161,7 +162,10 @@ export default function Home() {
 
       </div>
       </div>
-      <div className="my-30">
+      <div>
+        <PartnerShip />
+      </div>
+      <div className="mb-10">
         <TrackShipment />
       </div>
       
