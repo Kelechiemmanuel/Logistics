@@ -70,8 +70,8 @@ const Services = () => {
   };
 
   return (
-    <div className='overflow-hidden mb-30'>
-      <div className='flex gap-10 px-25'>
+    <div className='overflow-hidden py-15'>
+      <div className='flex flex-col lg:flex-row justify-center  gap-10 px:10 lg:px-25'>
         <div className='bg-linear-to-t from-[#093856]/80 to-transparent px-10 py-10 rounded-2xl flex justify-center items-center'>
         <div>
         <h1 className='text-[#093856] text-center font-medium pb-5 text-2xl'>Our Services</h1>
