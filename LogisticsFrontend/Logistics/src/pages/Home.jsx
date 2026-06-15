@@ -5,10 +5,10 @@ import { Truck, Plane, Ship } from "lucide-react";
 import truckImg from "../assets/truck.jpg";
 import planeImg from "../assets/plane.jpg";
 import shipImg from "../assets/ship.jpg";
-// import warehouse from "../assets/warehouse.jpg"
 import TrackShipment from "./TrackShipment";
 import PartnerShip from "./PartnerShip";
 import Count from "./Count";
+import Services from "./Services";
 
 const slides = [
   {
@@ -171,6 +171,9 @@ export default function Home() {
       </div>
       <div>
         <Count />
+      </div>
+      <div>
+        <Services />
       </div>
       
     </section>
