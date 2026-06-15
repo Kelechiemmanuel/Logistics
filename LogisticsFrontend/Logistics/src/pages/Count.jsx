@@ -53,8 +53,8 @@ const Count = () => {
                     <p>Clients Served</p>
                 </div>
             </div>
-            <div className='flex justify-around md:justify-center items-center gap-4 w-full'>
-                <Briefcase size={50} />
+            <div className='flex justify-around md:justify-start items-center gap-4 w-full'>
+                <Briefcase size={50} className=''/>
                 <div>
                     <h1>{projects} +</h1>
                     <p>Projects Completed</p>
@@ -63,7 +63,7 @@ const Count = () => {
             </div>
             <div className='flex justify-around md:justify-center items-center gap-4 w-full'>
                 <Globe size={50} />
-                <div>
+                <div className=''>
                     <h1>{offices} +</h1>
                     <p>Global Offices</p>
                 </div>

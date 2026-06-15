@@ -13,7 +13,7 @@ const PartnerShip = () => {
             <div className='flex slide-track gap-10'>
                 {slide.concat(slide).map((logos, index) => (
                     <div key={index} className='flex gap-10 shrink-0 items-center justify-center'>
-                        <img src={logos} alt="logos" className='w-30'/>
+                        <img src={logos} alt="logos" className='md:w-30 w-20'/>
                     </div>
                 ))}
             </div>
