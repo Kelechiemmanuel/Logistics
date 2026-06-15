@@ -8,6 +8,7 @@ import shipImg from "../assets/ship.jpg";
 // import warehouse from "../assets/warehouse.jpg"
 import TrackShipment from "./TrackShipment";
 import PartnerShip from "./PartnerShip";
+import Count from "./Count";
 
 const slides = [
   {
@@ -165,8 +166,11 @@ export default function Home() {
       <div>
         <PartnerShip />
       </div>
-      <div className="mb-10">
+      <div className="">
         <TrackShipment />
+      </div>
+      <div>
+        <Count />
       </div>
       
     </section>

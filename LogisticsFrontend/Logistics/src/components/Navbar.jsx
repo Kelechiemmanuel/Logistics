@@ -14,7 +14,7 @@ const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
     return (
         <div>
-            <nav className=' flex justify-between items-center p-10 md:p-10 bg-[#BDD9D7]'>
+            <nav className=' flex justify-between items-center p-10 md:p-10'>
                 <div>
                     <h1>Logistics</h1>
                 </div>

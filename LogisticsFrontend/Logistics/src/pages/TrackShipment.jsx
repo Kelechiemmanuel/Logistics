@@ -27,7 +27,7 @@ const TrackShipment = () => {
   }
 
   return (
-    <section className="relative w-full h-[50%] p-10">
+    <section className="relative w-full h-[50%] md:p-25 p-10">
       <div className="absolute inset-0 z-0 bg-black/80"
         style={{
           backgroundImage: `
