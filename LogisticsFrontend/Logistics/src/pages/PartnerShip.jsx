@@ -2,7 +2,7 @@ import React from 'react'
 import Amazon from '../assets/Amazon.png';
 import Dell from '../assets/Dell.png';
 import harvard from '../assets/harvard.png';
-import Health from '../assets/health.png';
+import Health from '../assets/Health.png';
 import Lendingtree from '../assets/Lendingtree.png';
 
 const PartnerShip = () => {
