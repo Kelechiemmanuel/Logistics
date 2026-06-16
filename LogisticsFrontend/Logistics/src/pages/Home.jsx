@@ -10,6 +10,7 @@ import PartnerShip from "./PartnerShip";
 import Count from "./Count";
 import Services from "./Services";
 import Testimony from "./Testimony";
+import AskedQuestions from "./AskedQuestions";
 
 const slides = [
   {
@@ -176,7 +177,12 @@ export default function Home() {
       <div>
         <Services />
       </div>
-      <Testimony />
+      <div>
+        <Testimony />
+      </div>
+      <div>
+        <AskedQuestions />
+      </div>
       
     </section>
   );
