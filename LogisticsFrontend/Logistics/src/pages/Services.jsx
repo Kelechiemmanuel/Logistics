@@ -70,8 +70,8 @@ const Services = () => {
   };
 
   return (
-    <div className='overflow-hidden py-15'>
-      <div className='flex flex-col lg:flex-row justify-center  gap-10 px:10 lg:px-25'>
+    <div className='overflow-hidden px-5 md:px-20 py-15'>
+      <div className='flex flex-col lg:flex-row justify-center  gap-10 p-5 px:10 lg:px-25 border border-[#BDD9D7] rounded-2xl'>
         <div className='bg-linear-to-t from-[#093856]/80 to-transparent px-10 py-10 rounded-2xl flex justify-center items-center'>
         <div>
         <h1 className='text-[#093856] text-center font-medium pb-5 text-2xl'>Our Services</h1>
@@ -80,7 +80,7 @@ const Services = () => {
           </p>
         </div>
         </div>
-        <div className='max-w-xl bg-linear-to-t from-[#093856]/80 to-transparent px-10 py-3 rounded-2xl'>
+        <div className='max-w-xl bg-linear-to-t from-[#093856]/80 to-transparent px-10 py-3 border border-[#BDD9D7] rounded-2xl'>
           <div className='bg-linear-to-t from-[#093856]/80 to-transparent px-10 py-3 rounded-2xl'>
             <h1 className='font-medium pt-5 text-2xl text-[#093856]'>{service[currentIndex].title}</h1>
             <p className='py-5 text-[#BDD9D7]'>{service[currentIndex].desc}</p>

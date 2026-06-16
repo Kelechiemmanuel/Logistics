@@ -89,7 +89,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <ActiveIcon size={50} className="text-[#BDD9D7] mb-4" />
+          <ActiveIcon size={50} className="text-[#f0f0f0] mb-4" />
         </motion.div>
 
         {/* TITLE */}
@@ -98,7 +98,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-bold text-[#BDD9D7]"
+          className="text-4xl md:text-6xl font-bold text-[#f0f0f0]"
         >
           {slides[current].title}
         </motion.h1>
@@ -109,13 +109,13 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-4 text-[#BDD9D7]"
+          className="mt-4 text-[#f0f0f0]"
         >
           {slides[current].subtitle}
         </motion.p>
 
         {/* CTA */}
-        <button className="mt-8 px-6 py-3 bg-[#BDD9D7] text-[#093856] rounded-full">
+        <button className="mt-8 px-6 py-3 bg-[#f0f0f0] text-[#093856] rounded-full">
           Discover More
         </button>
 
@@ -138,8 +138,8 @@ export default function Home() {
                   ${isActive ? "bg-white/20" : "bg-white/5"}
                 `}
               >
-                <Icon size={40} className="text-[#BDD9D7]" />
-                <h3 className="mt-4 font-bold text-[#BDD9D7]">
+                <Icon size={40} className="text-[#f0f0f0]" />
+                <h3 className="mt-4 font-bold text-[#f0f0f0]">
                   {item.title}
                 </h3>
               </motion.div>
@@ -155,7 +155,7 @@ export default function Home() {
               key={index}
               onClick={() => changeSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                current === index ? "bg-white scale-125" : "bg-gray-500"
+                current === index ? "bg-[#f0f0f0] scale-125" : "bg-gray-500"
               }`}
             />
           ))}

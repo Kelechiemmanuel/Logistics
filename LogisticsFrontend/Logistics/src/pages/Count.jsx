@@ -45,7 +45,7 @@ const Count = () => {
         return () => clearInterval(interval);
     }, []);
     return (
-        <div className='grid md:grid-cols-4 place-items-center bg-[#BDD9D7] py-10 text-[#093856] gap-5'>
+        <div className='grid md:grid-cols-4 place-items-center bg-[#f0f0f0] py-10 text-[#093856] gap-5'>
             <div className='flex justify-around md:justify-center items-center gap-4 w-full' >
                 <Truck size={50} />
                 <div>

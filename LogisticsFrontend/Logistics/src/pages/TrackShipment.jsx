@@ -42,12 +42,12 @@ const TrackShipment = () => {
             {message}
           </p>
           <p className='text-[#BDD9D7] font-medium mb-5 md:text-3xl'>Track Shipment</p>
-          <div className='flex justify-between items-center outline-0 bg-[#BDD9D7] w-full md:w-[50%] rounded-lg pl-3'>
+          <div className='flex justify-between items-center outline-0 bg-[#f0f0f0] w-full md:w-[50%] rounded-lg pl-3'>
             <input placeholder="Enter tracking number" value={trackingId}
               onChange={(e) => setTrackingId(e.target.value)}
               className='w-full outline-0'
             />
-            <button onClick={trackShipments} className='bg-[#093856] p-4 rounded-r-lg text-[#BDD9D7] cursor-pointer transition'>Track</button>
+            <button onClick={trackShipments} className='bg-[#093856] p-4 rounded-r-lg text-[#f0f0f0] cursor-pointer transition'>Track</button>
           </div>
 
           {shipment && (

@@ -9,14 +9,15 @@ import Services from '../pages/Services';
 import Contacts from '../pages/Contacts';
 import About from '../pages/About';
 import Account from '../pages/Account';
+import Logo from '../pages/Logo';
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
     return (
         <div>
-            <nav className=' flex justify-between items-center p-10 md:p-10'>
+            <nav className=' flex justify-between items-center p-8 md:px-20 px-5 bg-linear-to-b from-[#093856]/80 to-transparent'>
                 <div>
-                    <h1>Logistics</h1>
+                    <Logo />
                 </div>
 
                 <NavLink />

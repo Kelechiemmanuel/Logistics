@@ -8,7 +8,7 @@ import Lendingtree from '../assets/Lendingtree.png';
 const PartnerShip = () => {
     const slide = [Amazon, Dell, harvard, Health, Lendingtree, Amazon, harvard]
   return (
-    <div className='flex flex-col overflow-hidden w-full bg-[#BDD9D7] py-15'>
+    <div className='flex flex-col overflow-hidden w-full bg-[#f0f0f0] py-15'>
         <div className='relative'>
             <div className='flex slide-track gap-10'>
                 {slide.concat(slide).map((logos, index) => (
