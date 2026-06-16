@@ -71,20 +71,20 @@ const Services = () => {
 
   return (
     <div className='overflow-hidden px-5 md:px-20 py-15'>
-      <div className='flex flex-col lg:flex-row justify-center items-center gap-10 p-5 px:10 lg:px-25 border border-[#BDD9D7] rounded-2xl'>
-        <div className='bg-linear-to-t from-[#093856]/80 to-transparent border border-[#BDD9D7] px-10 py-10 rounded-2xl flex justify-center items-center'>
+      <div className='flex flex-col lg:flex-row justify-center items-center gap-10 p-5 px-5 md:px:10 lg:px-25 border border-[#BDD9D7] rounded-2xl'>
+        <div className='bg-linear-to-t from-[#093856]/80 to-transparent border border-[#BDD9D7] px-0 md:px-10 py-10 rounded-2xl flex justify-center items-center'>
         <div>
         <h1 className='text-[#093856] text-center font-semibold pb-5 text-2xl'>Our <span className='text-[#ff5c00]'>Services</span></h1>
-          <p className='bg-linear-to-t from-[#093856]/80 to-transparent px-10 py-10 rounded-2xl text-[#BDD9D7]'>
+          <p className='bg-linear-to-t from-[#093856]/80 to-transparent px-5 md:px-10 py-10 rounded-2xl text-[#BDD9D7]'>
             With a global shipping reputation for handling every last detail of our customers' particular logistics and forwarding needs, Fortune Global's team of expert professionals take care of all your logistics. If you're searching for shipping companies in Nigeria or logistics company in Nigeria, Fortune Global should be your one stop destination.
           </p>
         </div>
         </div>
-        <div className='max-w-xl bg-linear-to-b from-[#093856]/80 to-transparent border border-[#BDD9D7] px-10 py-3 rounded-2xl'>
+        <div className='max-w-xl bg-linear-to-b from-[#093856]/80 to-transparent border border-[#BDD9D7] md:px-10 px-0 py-3 rounded-2xl'>
           <div className='bg-linear-to-t from-[#093856]/80 to-transparent px-10 py-3 rounded-2xl'>
             <h1 className='font-medium pt-5 text-2xl text-[#093856]'>{service[currentIndex].title}</h1>
             <p className='py-5 text-[#BDD9D7]'>{service[currentIndex].desc}</p>
-            <div className='flex justify-center items-center bg-[#efeef7] py-6 px-10 rounded-xl'>
+            <div className='flex justify-center items-center bg-[#efeef7] py-6 md:px-10 px-2 rounded-xl'>
               <img src={service[currentIndex].image} alt={service[currentIndex].image} className='w-80 h-50 object-cover rounded-2xl' />
             </div>
           </div>

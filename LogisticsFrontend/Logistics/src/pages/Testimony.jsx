@@ -56,7 +56,7 @@ const Testimonials = () => {
     <section className="">
       <>
         <div className="px-5 md:px-20 pb-20">
-          <div className="flex flex-col md:flex-row gap-5 p-10 border border-[#093856] rounded-2xl">
+          <div className="flex flex-col md:flex-row gap-5 p-5 md:p-10 border border-[#093856] rounded-2xl">
             <div className="py-10 overflow-hidden rounded-2xl transition-transform duration-700 bg-linear-to-t from-[#f0f0f0]/90 to-transparent">
               <div
                 className="flex transition-transform duration-700"
@@ -69,7 +69,7 @@ const Testimonials = () => {
                     key={index}
                     className="min-w-full flex justify-center items-center"
                   >
-                    <div className="rounded-xl text-center">
+                    <div className="rounded-xl text-center p-3">
                       <div>
                         <img src={user.img} alt={user.img} className="rounded-2xl w-80 h-50 object-cover" />
                       </div>
@@ -99,7 +99,7 @@ const Testimonials = () => {
               </div>
             </div>
 
-            <div className='bg-linear-to-t from-[#f0f0f0]/80 to-transparent px-10 py-10 rounded-2xl flex justify-center items-center'>
+            <div className='bg-linear-to-t from-[#f0f0f0]/80 to-transparent px-5 md:px-10 py-10 rounded-2xl flex justify-center items-center'>
               <div>
                 <h1 className='text-[#093856] text-center font-semibold pb-5 text-2xl'>Our <span className="text-[#ff5c00]">Happy Clients</span></h1>
                 <p className='text-[#093856]'>
