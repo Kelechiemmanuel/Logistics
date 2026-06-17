@@ -41,7 +41,7 @@ const AskedQuestions = () => {
         setActive(active === id ? null : id);
     };
     return (
-        <div className='px-5 md:px-20 bg-white'>
+        <div className='px-5 md:px-20 bg-white mb-20'>
             <div className="px-5 md:px-1 pt-20 pb-10">
                 <h1 className='text-[#093856] font-semibold text-2xl'>Frequently Asked <span className='text-[#ff5c00]'>Questions</span></h1>
             </div>

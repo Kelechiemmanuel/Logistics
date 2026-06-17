@@ -90,7 +90,8 @@ const Services = () => {
           </div>
 
           <div className='flex justify-between pt-5'>
-            <button onClick={prevSlide} className="h-10 w-10 flex items-center cursor-pointer justify-center border border-[#093856] text-[#BDD9D7] rounded-full hover:bg-[#093856] transition">
+            <button onClick={prevSlide}
+             className="h-10 w-10 flex items-center cursor-pointer justify-center border border-[#093856] text-[#BDD9D7] rounded-full hover:bg-[#093856] transition">
               &#8592;
             </button>
 

@@ -34,7 +34,7 @@ const NavLink = () => {
                                 <Link to='/contacts' onClick={() => setOpenMenu(false)}>Contacts</Link>
                                 <Link to='/about' onClick={() => setOpenMenu(false)}>About</Link>
 
-                                <div className='' onClick={() => setOpenMenu(false)}>
+                                <div className='bg-[#ff5c00] text-[#093856]' onClick={() => setOpenMenu(false)} >
                                     <Link to='/account' className='flex'>
                                     <CircleUser />
                                     Account

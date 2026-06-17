@@ -130,6 +130,7 @@ const LocalShipping = () => {
   ];
 
   return (
+    <>
     <div className="p-10 bg-[#f3f4f6]">
       <div className="max-w-4xl mx-auto py-20">
         <h1 className="text-center text-xl md:text-4xl font-bold mb-10 text-[#000000]">We are excited to serve you!</h1>
@@ -139,7 +140,7 @@ const LocalShipping = () => {
           across cities. GIGGo eliminates the need to leave your home or comfort zone, trying to dispatch items for delivery.
         </p>
       </div>
-      <div className="max-w-4xl mx-auto bg-[#ffffff] p-5">
+      <div className="max-w-4xl mx-auto bg-[#ffffff] p-5 rounded-xl">
 
         <ProgressBar />
 
@@ -400,6 +401,8 @@ const LocalShipping = () => {
         )}
       </div>
     </div>
+
+    </>
   );
 };
 

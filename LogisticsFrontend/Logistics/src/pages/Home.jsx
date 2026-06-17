@@ -117,7 +117,7 @@ export default function Home() {
         </motion.p>
 
         {/* CTA */}
-        <button className="mt-8 px-6 py-3 bg-[#f0f0f0] text-[#093856] rounded-full">
+        <button className="mt-8 px-6 py-3 bg-[#ff5c00] text-[#093856] rounded-full">
           Discover More
         </button>
 
