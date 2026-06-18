@@ -42,7 +42,7 @@ const [form, setForm] = useState({
 
 // if (loading) return <Spinner />
   return (
-    <div className='flex justify-center items-center h-screen bg-[#f3f4f6]'>
+    <div className='flex justify-center items-center h-screen bg-[#f3f4f6] mt-15'>
     <div className='flex justify-center items-center md:w-[45%] w-full p-10'>
       <div className="flex flex-col gap-8 text-center w-full p-10 text-[#777d87] text-xl">
         <h2 className='text-4xl font-bold'>Register</h2>
