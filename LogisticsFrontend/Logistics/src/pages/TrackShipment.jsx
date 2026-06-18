@@ -3,6 +3,7 @@ import route from '../assets/route.jpg'
 import shipping from '../assets/shipping.jpg'
 import API from '../api/api'
 import { X } from 'lucide-react'
+import ProgressBar from './ProgressiveBar'
 
 
 const TrackShipment = () => {
@@ -51,62 +52,110 @@ const TrackShipment = () => {
             <button onClick={trackShipments} className='bg-[#ff5c00] p-3 px-7 text-[#093856] cursor-pointer transition rounded-lg'>Track</button>
           </div>
 
-<>
-    <section className="relative">
-      {/* Entire page content */}
+          <>
+            <section className="relative">
+              {/* Entire page content */}
 
-      <div className="relative z-10">
-        {/* Background cards */}
-      </div>
+              <div className="relative z-10">
+                {/* Background cards */}
+              </div>
 
-    </section>
+            </section>
 
-    {/* POPUP OUTSIDE SECTION */}
-    {pop && shipment && (
-      <div className="fixed inset-0 z-99999">
+            {/* POPUP OUTSIDE SECTION */}
+            {pop && shipment && (
+              <div className="fixed inset-0 z-99999">
 
-        {/* Overlay */}
-        <div
-          className="absolute inset-0 bg-black/70"
-          onClick={() => setPop(false)}
-        />
+                {/* Overlay */}
+                <div
+                  className="absolute inset-0 bg-black/60"
+                  onClick={() => setPop(false)}
+                />
 
-        {/* Modal */}
-        <div className="absolute inset-0 flex items-center justify-center">
+                {/* Modal */}
+                <div className="absolute inset-0 flex items-center justify-center">
 
-          <div className="bg-white rounded-xl p-6 w-[90%] md:w-125 relative">
+                  <div className="bg-white rounded-xl p-6 w-[90%] md:w-125 relative">
 
-            <button
-              className="absolute right-4 top-2"
-              onClick={() => setPop(false)}
-            >
-              <X />
-            </button>
+                    <button
+                      className="absolute right-2 top-2 cursor-pointer"
+                      onClick={() => setPop(false)}
+                    >
+                      <X />
+                    </button>
 
-            <div className='flex justify-between my-4'>
-            <h2 className="text-xl font-bold mb-4">
-              {trackingId}
-            </h2>
-            <button className=' px-7 bg-[#ff5c00] rounded-full text-sm'>
-              {shipment.status}
-            </button>
-            </div>
+                    <div className='flex justify-between my-4'>
+                      <h2 className="text-xl font-bold mb-4">
+                        {trackingId}
+                      </h2>
+                      <button className=' px-7 bg-[#ff5c00] rounded-full text-xs text-white'>
+                        {shipment.status}
+                      </button>
+                    </div>
+
+                    <div className='flex justify-between items-center my-10'>
+                      <div>
+                        <p className='text-xs text-gray-600'>From</p>
+                        <p>{shipment.pickup_address}</p>
+                        <p className='text-xs text-gray-600'>Service</p>
+                        <p>{shipment.service_type}</p>
+                      </div>
+                      <div>
+                        <p className='text-xs text-gray-600'>To</p>
+                        <p>
+                          {shipment.destination_address}
+                        </p>
+                        <p className='text-xs text-gray-600'>Amount</p>
+                        <p>₦{shipment.amount}</p>
+                      </div>
+                    </div>
+                    <div className='flex justify-between items-center'>
+                      <div>
+                        <p className='text-xs text-gray-600'>Placed by</p>
+                        <p>
+                          {new Date(shipment.created_at).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })}
+                        </p>
+                      </div>
+                      <div>
+                        <p className='text-xs text-gray-600'>Estimated Date</p>
+                        <p>
+                          {new Date(shipment.created_at).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })}
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+
+                      <ProgressBar status={shipment.status} />
+                      <div className="grid grid-cols-3 text-xs w-[90%] text-gray-600">
+                        <span>Packed</span>
+                        <span>In Transit</span>
+                        <span>Delivered</span>
+                      </div>
+                    </div>
 
 
-            <p>Vehicle: {shipment.vehicle}</p>
+                    {/* <p>Vehicle: {shipment.vehicle}</p>
             <p>Service: {shipment.service_type}</p>
-            <p>Status: {shipment.status}</p>
-            <p>Pick up: {shipment.pickup_address}</p>
-            <p>Destination: {shipment.destination_address}</p>
-            <p>Amount: {shipment.amount}</p>
+            <p>Status: {shipment.status}</p> */}
 
-          </div>
+                    {/* <p>Destination: {shipment.destination_address}</p> */}
+                    {/* <p>Amount: {shipment.amount}</p> */}
 
-        </div>
+                  </div>
 
-      </div>
-    )}
-  </>
+                </div>
+
+              </div>
+            )}
+          </>
 
         </div>
       </div>
