@@ -120,8 +120,7 @@ const Testimonials = () => {
              url(${shipping})
           `}}
         />
-
-        <div className="relative z-100 w-full px-5 md:px-20 py-20">
+        <div className="relative z-0 w-full px-5 md:px-20 py-20">
           <h1 className="text-[#f0f0f0] py-10 font-semibold text-2xl">
             Businesses That Thrive With <span className="text-[#ff5c00]">KELS Logistics</span>
           </h1>

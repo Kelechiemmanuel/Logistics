@@ -28,7 +28,7 @@ const Navbar = () => {
                     </nav>
                 )}
             </>
-            {/* <nav className=' flex justify-between items-center p-8 md:px-20 px-5 bg-linear-to-b from-[#093856]/80 to-transparent'>
+            <nav className=' flex justify-between items-center p-8 md:px-20 px-5 bg-linear-to-b from-[#093856]/80 to-transparent'>
                 <div>
                     <Logo />
                 </div>
@@ -40,7 +40,7 @@ const Navbar = () => {
                             Account</Link>
                     </div>
                 </div>
-            </nav> */}
+            </nav>
         </div>
 
     )
