@@ -11,7 +11,7 @@ const TrackShipment = () => {
   const [shipment, setShipment] = useState(null)
   const [message, setMessage] = useState("")
   const [pop, setPop] = useState(false);
-
+  const steps = ["packed", "in_transit", "delivered"];
   const trackShipments = async () => {
     if (!trackingId) {
       setMessage("Please enter tracking ID");
@@ -84,28 +84,33 @@ const TrackShipment = () => {
                       <X />
                     </button>
 
-                    <div className='flex justify-between my-4'>
-                      <h2 className="text-xl font-bold mb-4">
-                        {trackingId}
-                      </h2>
-                      <button className=' px-7 bg-[#ff5c00] rounded-full text-xs text-white'>
-                        {shipment.status}
-                      </button>
+                    <div className='flex justify-between items-center my-4'>
+                      <div>
+                        <p className='text-xs text-gray-600'>Tracking Id</p>
+                        <h2 className="text-xl font-bold mb-4">
+                          {trackingId}
+                        </h2>
+                      </div>
+                      <div>
+                        <button className='p-2 px-7 bg-[#ff5c00] rounded-full text-xs text-white'>
+                          {shipment.status}
+                        </button>
+                      </div>
                     </div>
 
                     <div className='flex justify-between items-center my-10'>
-                      <div>
+                      <div className='text-left'>
                         <p className='text-xs text-gray-600'>From</p>
                         <p>{shipment.pickup_address}</p>
-                        <p className='text-xs text-gray-600'>Service</p>
+                        <p className='text-xs text-gray-600 mt-3'>Service</p>
                         <p>{shipment.service_type}</p>
                       </div>
                       <div>
                         <p className='text-xs text-gray-600'>To</p>
-                        <p>
+                        <p className=''>
                           {shipment.destination_address}
                         </p>
-                        <p className='text-xs text-gray-600'>Amount</p>
+                        <p className='text-xs text-gray-600 mt-3'>Amount</p>
                         <p>₦{shipment.amount}</p>
                       </div>
                     </div>
@@ -134,10 +139,19 @@ const TrackShipment = () => {
                     <div>
 
                       <ProgressBar status={shipment.status} />
-                      <div className="grid grid-cols-3 text-xs w-[90%] text-gray-600">
-                        <span>Packed</span>
-                        <span>In Transit</span>
-                        <span>Delivered</span>
+                      <div className="grid grid-cols-3 text-xs mt-2 w-[90%]">
+                        {steps.map((step) => (
+                          <span
+                            key={step}
+                            className={
+                              shipment.status === step
+                                ? "text-green-600 font-semibold"
+                                : "text-gray-400"
+                            }
+                          >
+                            {step.replace("_", " ")}
+                          </span>
+                        ))}
                       </div>
                     </div>
 
