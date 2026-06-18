@@ -176,7 +176,7 @@
   return (
   <div className="pt-24">
   <>
-  <div className="p-10 bg-[#f3f4f6] flex justify-center lg:flex-row flex-col items-center gap-5 lg:items-start w-full h-full">
+  <div className="p-10 pb-20 bg-[#f3f4f6] flex justify-center lg:flex-row flex-col items-center gap-5 lg:items-start w-full h-full">
   <div className="bg-[#ffffff] p-5 lg:w-[20%] w-full h-50 md:mt-20 mt-5 rounded-lg">
   <p>
   Lorem ipsum, dolor sit amet consectetur adipisicing.
