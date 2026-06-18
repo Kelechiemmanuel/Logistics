@@ -154,15 +154,6 @@ const TrackShipment = () => {
                         ))}
                       </div>
                     </div>
-
-
-                    {/* <p>Vehicle: {shipment.vehicle}</p>
-            <p>Service: {shipment.service_type}</p>
-            <p>Status: {shipment.status}</p> */}
-
-                    {/* <p>Destination: {shipment.destination_address}</p> */}
-                    {/* <p>Amount: {shipment.amount}</p> */}
-
                   </div>
 
                 </div>
@@ -173,19 +164,6 @@ const TrackShipment = () => {
 
         </div>
       </div>
-
-
-
-      {/* {shipment && (
-        <div className='text-white'>
-          <p>Vehicle: {shipment.vehicle}</p>
-          <p>Service: {shipment.service_type}</p>
-          <p>status: {shipment.status}</p>
-          <p>Pick up: {shipment.pickup_address}</p>
-          <p>Destination: {shipment.destination_address}</p>
-          <p>Amount: {shipment.amount}</p>
-        </div>
-      )} */}
     </section>
   )
 }

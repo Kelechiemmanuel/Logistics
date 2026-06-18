@@ -17,6 +17,7 @@ import LocalShipping from './services/LocalShipping';
 import GlobalShipping from './services/GlobalShipping';
 import PersonalShopping from './services/PersonalShopping';
 import WareHousing from './services/WareHousing';
+import TrackShipment from './pages/TrackShipment';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route path='/global/shipping' element={<GlobalShipping />}/>
           <Route path='/personal/shopping' element={<PersonalShopping />}/>
           <Route path='/ware/housing' element={<WareHousing />}/>
+          <Route path='/track/shipment' element={<TrackShipment />}/>
 
           <Route path='/admin/dashboard'
             element={
