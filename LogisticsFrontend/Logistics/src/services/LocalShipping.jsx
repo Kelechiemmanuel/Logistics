@@ -215,7 +215,7 @@
             setForm({ ...form, vehicle: v.type });
             setStep(2);
           }}
-          className={`border p-5 flex flex-col items-center justify-center gap-2 rounded-lg transition
+          className={`border p-5 flex flex-col items-center justify-center gap-2 rounded-lg transition cursor-pointer
   ${form.vehicle === v.type
               ? "bg-[#000000] text-white"
               : "hover:bg-gray-100"
@@ -233,21 +233,21 @@
   {step === 2 && (
   <div>
     <div className="flex w-[58%] justify-between py-5">
-      <button onClick={() => setStep(1)} className="ml-3">Back</button>
+      <button onClick={() => setStep(1)} className="ml-3 cursor-pointer">Back</button>
       <h2 className="text-center">Select Service</h2>
     </div>
 
     <button onClick={() => {
       setForm({ ...form, service_type: "standard" });
       setStep(3);
-    }} className="border p-3 w-full mb-2 outline-0 border-[#777d87] bg-[#ffffff] rounded-xl">
+    }} className="border p-3 w-full mb-2  outline-0 border-[#777d87] bg-[#ffffff] rounded-xl cursor-pointer">
       Standard
     </button>
 
     <button onClick={() => {
       setForm({ ...form, service_type: "express" });
       setStep(3);
-    }} className="border p-3 w-full border-[#777d87] bg-[#ffffff] rounded-xl">
+    }} className="border p-3 w-full border-[#777d87] bg-[#ffffff] rounded-xl cursor-pointer">
       Express
     </button>
   </div>
@@ -365,8 +365,8 @@
 
     {/* NAV */}
     <div className="flex justify-between items-center mt-5">
-      <button onClick={() => setStep(2)}>Back</button>
-      <button onClick={() => setStep(4)}>Continue</button>
+      <button onClick={() => setStep(2)} className="cursor-pointer">Back</button>
+      <button onClick={() => setStep(4)} className="cursor-pointer">Continue</button>
     </div>
   </div>
   )}
@@ -435,8 +435,8 @@
         </div>
       </div>
       <div className="flex justify-between">
-        <button onClick={() => setStep(3)} className="ml-3">Back</button>
-        <button onClick={() => setStep(5)}>Continue</button>
+        <button onClick={() => setStep(3)} className="ml-3 cursor-pointer">Back</button>
+        <button onClick={() => setStep(5)} className="cursor-pointer">Continue</button>
       </div>
     </div>
   </div>
@@ -468,8 +468,8 @@
       </div>
     </div>
     <div className="flex justify-between">
-      <button onClick={() => setStep(4)} className="ml-3">Back</button>
-      <button onClick={() => setStep(6)}>Continue</button>
+      <button onClick={() => setStep(4)} className="ml-3 cursor-pointer">Back</button>
+      <button onClick={() => setStep(6)} className="cursor-pointer">Continue</button>
     </div>
   </div>
   )}
@@ -484,7 +484,7 @@
     <p>Destination: {form.destination_address}</p>
 
     <div className="flex justify-between py-5">
-      <button onClick={() => setStep(5)} className="ml-3">Back</button>
+      <button onClick={() => setStep(5)} className="ml-3 cursor-pointer">Back</button>
       <button onClick={() => setStep(7)} disabled={loading}>
         {loading ? "loading" : "Continue"}
       </button>
@@ -505,7 +505,7 @@
       {loading ? "Creating..." : "Create Shipment"}
     </button>
 
-    <button onClick={() => setStep(6)} className="ml-3">
+    <button onClick={() => setStep(6)} className="ml-3 cursor-pointer">
       Back
     </button>
   </div>
