@@ -19,7 +19,7 @@ const AnalyticsGraph = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    API.get("/api/admin/analytics")
+    API.get("/api/analytics/analytics")
       .then((res) => {
         const data = res.data;
 
