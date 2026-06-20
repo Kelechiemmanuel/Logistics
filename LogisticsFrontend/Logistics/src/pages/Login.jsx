@@ -52,7 +52,7 @@ const Login = () => {
       return() => clearTimeout(timer)
     }, [])
 
-    if(loading) return <Spinner />
+    // if(loading) return <Spinner />
     return (
     <div className='flex justify-center items-center h-screen bg-[#f3f4f6] mt-15'>
     <div className='flex justify-center items-center w-full md:w-[45%] p-10'>

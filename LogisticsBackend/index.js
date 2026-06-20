@@ -20,6 +20,8 @@ app.use('/api/admin', adminRoute);
 app.use('/api/driver', driverRoute);
 app.use('/api/customer', customerRoute);
 
+app.use('/api/analytics', analyticsRoute);
+
 
 
 app.get('/', (req, res) => {
