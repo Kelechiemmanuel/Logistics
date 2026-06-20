@@ -4,6 +4,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');
 const { getAllUsers, getAllShipments, deleteShipment, assignDriver } = require('../controllers/adminController');
 
+
 router.get('/users', 
     authMiddleware,
     roleMiddleware('admin'),

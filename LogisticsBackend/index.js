@@ -21,7 +21,7 @@ app.use('/api/admin', adminRoute);
 app.use('/api/driver', driverRoute);
 app.use('/api/customer', customerRoute);
 
-// app.use('/api/analytics', analyticsRoute);
+app.use('/api/analytics', analyticsRoute);
 
 
 
