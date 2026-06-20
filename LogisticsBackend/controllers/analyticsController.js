@@ -3,15 +3,18 @@ const pool = require("../config/db");
 const getAnalytics = async (req, res) => {
   try {
     // 1. SUMMARY CARDS
-    const summaryResult = await pool.query(`
-      SELECT
-        COUNT(*) AS total_shipments,
-        SUM(amount) AS revenue,
-        COUNT(*) FILTER (WHERE status = 'pending') AS pending,
-        COUNT(*) FILTER (WHERE status = 'transit') AS transit,
-        COUNT(*) FILTER (WHERE status = 'delivered') AS delivered
-      FROM shipments
-    `);
+  const summaryResult = await pool.query(`
+  SELECT
+    COUNT(*) AS total_shipments,
+    SUM(amount) AS revenue,
+
+    COUNT(*) FILTER (WHERE LOWER(status) = 'pending') AS pending,
+    COUNT(*) FILTER (WHERE LOWER(status) = 'transit') AS transit,
+    COUNT(*) FILTER (WHERE LOWER(status) = 'delivered') AS delivered,
+    COUNT(*) FILTER (WHERE LOWER(status) = 'assigned') AS assigned
+
+  FROM shipments
+`);
 
     // 2. SHIPMENT TREND (MONTHLY)
     const trendResult = await pool.query(`
