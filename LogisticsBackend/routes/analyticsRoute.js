@@ -4,7 +4,7 @@ const router = express.Router();
 const { getAnalytics } = require("../controllers/analyticsController");
 const roleMiddleware = require("../middleware/roleMiddleware");
 
-router.get("/analytic", 
+router.get("/analytics", 
     roleMiddleware("admin"), 
     getAnalytics);
 
