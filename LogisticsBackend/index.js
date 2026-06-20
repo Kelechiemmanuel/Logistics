@@ -7,6 +7,7 @@ const shipmentRoute = require('./routes/shipmentRoute');
 const adminRoute = require('./routes/adminRoute');
 const driverRoute = require('./routes/driverRoute');
 const customerRoute = require('./routes/customerRoute');
+const analyticsRoute = require('./routes/analyticsRoute')
 
 
 app.use(cors());
