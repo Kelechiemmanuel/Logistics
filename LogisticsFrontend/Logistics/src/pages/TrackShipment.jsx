@@ -3,7 +3,7 @@ import route from '../assets/route.jpg'
 import shipping from '../assets/shipping.jpg'
 import API from '../api/api'
 import { X } from 'lucide-react'
-import ProgressBar from './ProgressiveBar'
+// import ProgressBar from './ProgressiveBar'
 
 
 const TrackShipment = () => {
@@ -11,7 +11,7 @@ const TrackShipment = () => {
   const [shipment, setShipment] = useState(null)
   const [message, setMessage] = useState("")
   const [pop, setPop] = useState(false);
-  const steps = ["packed", "in_transit", "delivered"];
+  // const steps = ["packed", "in_transit", "delivered"];
   
   const trackShipments = async () => {
     if (!trackingId) {
@@ -139,7 +139,7 @@ const TrackShipment = () => {
                       </div>
                     </div>
                     <div>
-
+{/* 
                       <ProgressBar status={shipment.status} />
                       <div className="grid grid-cols-3 text-xs mt-2 w-[90%]">
                         {steps.map((step) => (
@@ -154,7 +154,7 @@ const TrackShipment = () => {
                             {step.replace("_", " ")}
                           </span>
                         ))}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
