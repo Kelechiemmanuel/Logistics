@@ -8,13 +8,13 @@ const {createShipment } = require('../controllers/shipmentController')
 
 router.get('/shipments', 
     authMiddleware,
-    roleMiddleware("customer"),
+    roleMiddleware("customer", "admin"),
     getMyShipments
 )
 
 router.get('/track/:trackingId',
     authMiddleware,
-    // roleMiddleware("customer"),
+    roleMiddleware("customer", "admin"),
     trackShipments
 )
 
