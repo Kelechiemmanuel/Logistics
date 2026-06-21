@@ -26,6 +26,22 @@ const getAnalytics = async (req, res) => {
       ORDER BY DATE_TRUNC('month', created_at);
     `);
 
+    const volumeTrendResult = await pool.query(`
+  SELECT
+    TO_CHAR(DATE_TRUNC('day', created_at), 'DD Mon') AS day,
+    COUNT(*)::int AS volume
+  FROM shipments
+  GROUP BY DATE_TRUNC('day', created_at)
+  ORDER BY DATE_TRUNC('day', created_at);
+`);
+
+return res.json({
+  summary: summaryResult.rows[0],
+  shipmentTrend: volumeTrendResult.rows,
+  deliveryStatus,
+  shipments: shipmentsResult.rows,
+});
+
     // 🔥 HERE IS THE CORRECT PLACE FOR GROWTH LOGIC
     const trendWithGrowth = trendResult.rows.map((item, index, arr) => {
       const prev = arr[index - 1]?.total || 0;
