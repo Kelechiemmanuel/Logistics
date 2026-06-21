@@ -28,11 +28,11 @@ const getAnalytics = async (req, res) => {
 
     // 3. DELIVERY STATUS DISTRIBUTION
     const statusResult = await pool.query(`
-SELECT
-  LOWER(status) AS status,
-  COUNT(*) AS count
-FROM shipments
-GROUP BY LOWER(status);
+    SELECT
+      LOWER(status) AS status,
+      COUNT(*) AS count
+      FROM shipments
+      GROUP BY LOWER(status);
     `);
 
     // 4. RECENT SHIPMENTS

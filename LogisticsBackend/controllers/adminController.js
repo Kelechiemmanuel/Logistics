@@ -1,4 +1,5 @@
 const pool = require('../config/db');
+const bcrypt = require('bcryptjs')
 
 //GET ALL USERS
 const getAllUsers = async (req, res) => {
@@ -84,11 +85,50 @@ const assignDriver = async (req, res) => {
     }
 };
 
-module.exports = { assignDriver };
+const createDriver = async () => {
+    const {fullname, email, phone, password } = req.body;
+
+    try {
+        if (!fullname || !email || !phone || !password){
+            return res.status(400).json({
+                message: "All field are required"
+            });
+        }
+        
+            const existing = await pool.query('SELECT id FROM users WHERE id = $1', [email]);
+            if(existing.rows.length){
+                return res.status(400).json({
+                    message: "Driver already exist"
+                })
+            }
+
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const result = await pool.query(`
+                INSERT INTO user (fullname, email, phone, password, role)
+                VALUES($1, $2, $3, $4, driver)
+                RETURNING(id, fullname, email, phone, role, created_at)
+                `,
+                [fullname, email, phone, hashedPassword]
+            );
+            return res.status(200).json({
+                message: "Driver created successfully",
+                driver: result.rows[0]
+            })
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: "Server error"
+        })
+        
+    }
+}
+
 
 module.exports = {
     getAllUsers,
     getAllShipments,
     deleteShipment,
-    assignDriver
+    assignDriver,
+    createDriver
 }
