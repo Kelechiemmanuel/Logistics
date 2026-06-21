@@ -5,10 +5,13 @@ import DashboardHeader from '../pages/DashboardHeader';
 import API from '../api/api';
 import ShipmentChart from '../pages/AnalyticsGraph';
 import AnalyticsGraph from '../pages/AnalyticsGraph';
+import AddDriver from '../pages/AddDriver';
+import { useNavigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const [shipment, setShipment] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     API.get('api/admin/shipments')
@@ -68,6 +71,9 @@ const AdminDashboard = () => {
                 <input type="text" placeholder='Search by name or tracking ID' onChange={(e) => setSearch(e.target.value)} className='outline-0 p-2 border border-gray-200 rounded-2xl text-xs' />
               <div>
                 <p>{shipment.length}</p>
+              </div>
+              <div>
+                <button onClick={() => navigate('/add/driver')}>Add Driver</button>
               </div>
               </div>
   

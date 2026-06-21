@@ -18,6 +18,7 @@ import GlobalShipping from './services/GlobalShipping';
 import PersonalShopping from './services/PersonalShopping';
 import WareHousing from './services/WareHousing';
 import TrackShipment from './pages/TrackShipment';
+import AddDriver from './pages/AddDriver';
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
           <Route path='/personal/shopping' element={<PersonalShopping />}/>
           <Route path='/ware/housing' element={<WareHousing />}/>
           <Route path='/track/shipment' element={<TrackShipment />}/>
+          <Route path='/admin/dashboard/add/driver' element={<AddDriver />}/>
 
           <Route path='/admin/dashboard'
             element={
