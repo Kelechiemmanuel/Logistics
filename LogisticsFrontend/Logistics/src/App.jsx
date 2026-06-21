@@ -39,7 +39,11 @@ const App = () => {
           <Route path='/personal/shopping' element={<PersonalShopping />}/>
           <Route path='/ware/housing' element={<WareHousing />}/>
           <Route path='/track/shipment' element={<TrackShipment />}/>
-          <Route path='/admin/dashboard/add/driver' element={<AddDriver />}/>
+          
+          <Route path='/add/driver' element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AddDriver />
+          </ProtectedRoute>}/>
 
           <Route path='/admin/dashboard'
             element={

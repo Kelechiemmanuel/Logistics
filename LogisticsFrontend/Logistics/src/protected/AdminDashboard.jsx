@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SideBar from '../components/SideBar'
-import { Sparkle, TrendingDown, TrendingUp, Waves } from 'lucide-react';
+import { Import, Sparkle, TrendingDown, TrendingUp, Waves, X } from 'lucide-react';
 import DashboardHeader from '../pages/DashboardHeader';
 import API from '../api/api';
 import ShipmentChart from '../pages/AnalyticsGraph';
@@ -8,7 +8,9 @@ import AnalyticsGraph from '../pages/AnalyticsGraph';
 import AddDriver from '../pages/AddDriver';
 import { useNavigate } from 'react-router-dom';
 
+
 const AdminDashboard = () => {
+  const [pop, setPop] = useState(false);
   const [shipment, setShipment] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -21,7 +23,6 @@ const AdminDashboard = () => {
           res.data?.shipments ||
           res.data?.data ||
           res.data
-
         setShipment(Array.isArray(data) ? data : [])
       })
       .catch((error) => {
@@ -69,11 +70,11 @@ const AdminDashboard = () => {
               <h1 className='leading-20'>Get All Shipment</h1>
               <div className='flex justify-between'>
                 <input type="text" placeholder='Search by name or tracking ID' onChange={(e) => setSearch(e.target.value)} className='outline-0 p-2 border border-gray-200 rounded-2xl text-xs' />
-              <div>
+              <div className='flex items-center gap-5'>
                 <p>{shipment.length}</p>
-              </div>
-              <div>
-                <button onClick={() => navigate('/add/driver')}>Add Driver</button>
+                <button onClick={() => setPop(true)}>
+                  Add Driver
+                </button>
               </div>
               </div>
   
@@ -96,13 +97,12 @@ const AdminDashboard = () => {
               .slice(0, 8)
               .map((ship, index) => (
                 <div key={ship.id || index} className='grid gap-5 grid-cols-8 text-xs p-4  border-t border-t-gray-200'>
-                  <h1>{ship.customer_name || "N/A"}</h1>
-                  <p>{ship.tracking_id || "N/A"}</p>
-                  <p className='text-[8px]'>{ship.pickup_address || "-"}</p>
-                  <p>{ship.status || "Pending"}</p>
-                  <p>{ship.service_type || "-"}</p>
-                  <p>{ship.vehicle || "-"}</p>
-
+                  <h1>{ship.customer_name}</h1>
+                  <p>{ship.tracking_id}</p>
+                  <p className='text-[8px]'>{ship.pickup_address}</p>
+                  <p>{ship.status}</p>
+                  <p>{ship.service_type}</p>
+                  <p>{ship.vehicle}</p>
                   <p>
                     {new Date(ship.created_at).toLocaleDateString("en-GB", {
                       day: "2-digit",
@@ -117,6 +117,26 @@ const AdminDashboard = () => {
           </div>
         </div>
          <div className='w-[20%] h-50 bg-[#ffff] rounded-2xl border border-gray-200'></div>
+      </div>
+      <div>
+   {pop && (
+  <div className="fixed inset-0 z-10 flex items-center justify-center">
+    {/* Backdrop */}
+    <div
+      className="absolute inset-0 bg-black/50"
+      onClick={() => setPop(false)}
+    />
+    {/* Modal Content */}
+    <div className=" bg-white rounded-2xl p-6 w-[90%] md:w-175 max-h-[90vh] overflow-y-auto">
+      
+      <AddDriver />
+
+      <button className="absolute top-4 right-5 text-red-500" onClick={() => setPop(false)} ><X /></button>
+
+    </div>
+
+  </div>
+)}
       </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import API from '../api/api'
+import { X } from 'lucide-react';
 
 const AddDriver = () => {
     const[success, setSuccess] = useState("")
@@ -26,8 +27,9 @@ const AddDriver = () => {
         }
     }
   return (
-    <div className='flex justify-center items-center h-screen bg-black/80 mt-15'>
-        <div className='flex justify-center items-center w-full md:w-[45%] p-10'>
+    <div className='flex justify-center items-center h-screen fixed w-screen top-0 left-0'>
+        <div className='flex justify-center items-center w-full md:w-[45%] p-10 bg-[#f3f4f6]'>
+
         <div className='flex flex-col gap-8 text-center w-full p-10 text-[#777d87] text-xl'>
         {success && <p className='text-green-600'>{success}</p>}
         <input type="text" value={form.fullname} placeholder='Fullname'

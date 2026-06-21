@@ -13,10 +13,12 @@ const location = useLocation();
 const isLocalShippingDashboard = location.pathname.startsWith("/local/shipping")
 const isCustomerDashboard = location.pathname.startsWith("/customer/dashboard")
 const isAdminDashboard = location.pathname.startsWith('/admin/dashboard');
+const isDriverDashboard = location.pathname.startsWith('/add/driver');
 const showDashboardNav = isLocalShippingDashboard || isCustomerDashboard;
+const hideNavbar = isAdminDashboard || isDriverDashboard;
 return (
 <>
-{!isAdminDashboard && (
+{!hideNavbar && (
     <div className='fixed left-0 top-0 right-0 z-50 bg-[#f0f0f0]'>
 <>
     {!showDashboardNav && (
