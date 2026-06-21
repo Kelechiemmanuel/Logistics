@@ -14,7 +14,7 @@ router.get('/shipments',
 
 router.get('/track/:trackingId',
     authMiddleware,
-    roleMiddleware("customer"),
+    // roleMiddleware("customer"),
     trackShipments
 )
 

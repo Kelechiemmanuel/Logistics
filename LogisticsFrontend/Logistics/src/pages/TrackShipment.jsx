@@ -19,10 +19,11 @@ const TrackShipment = () => {
       return;
     }
     try {
-      const res = await API.get(`api/shipments/track/${trackingId}`)
+      const res = await API.get(`api/shipments/track/${trackingId.trim()}`)
       setShipment(res.data.tracking)
       setPop(true)
       setMessage(`Shipment found for Tracking ID ${trackingId}`)
+      console.log("TRACKING ID:", trackingId);
 
     } catch (error) {
       console.log("Tracking error", error);
