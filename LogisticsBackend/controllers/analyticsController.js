@@ -17,14 +17,14 @@ const getAnalytics = async (req, res) => {
     `);
 
     // 2. SHIPMENT TREND (MONTHLY)
-    const trendResult = await pool.query(`
-      SELECT
-        TO_CHAR(DATE_TRUNC('month', created_at), 'Mon YYYY') AS month,
-        COUNT(*)::int AS total
-      FROM shipments
-      GROUP BY DATE_TRUNC('month', created_at)
-      ORDER BY DATE_TRUNC('month', created_at);
-    `);
+    // const trendResult = await pool.query(`
+    //   SELECT
+    //     TO_CHAR(DATE_TRUNC('month', created_at), 'Mon YYYY') AS month,
+    //     COUNT(*)::int AS total
+    //   FROM shipments
+    //   GROUP BY DATE_TRUNC('month', created_at)
+    //   ORDER BY DATE_TRUNC('month', created_at);
+    // `);
 
     const volumeTrendResult = await pool.query(`
   SELECT
@@ -35,12 +35,6 @@ const getAnalytics = async (req, res) => {
   ORDER BY DATE_TRUNC('day', created_at);
 `);
 
-return res.json({
-  summary: summaryResult.rows[0],
-  shipmentTrend: volumeTrendResult.rows,
-  deliveryStatus,
-  shipments: shipmentsResult.rows,
-});
 
     // 🔥 HERE IS THE CORRECT PLACE FOR GROWTH LOGIC
     const trendWithGrowth = trendResult.rows.map((item, index, arr) => {
@@ -83,13 +77,12 @@ return res.json({
       LIMIT 10;
     `);
 
-    // ✅ FINAL RESPONSE
-    return res.json({
-      summary: summaryResult.rows[0],
-      shipmentTrend: trendWithGrowth, // 👈 USED HERE
-      deliveryStatus,
-      shipments: shipmentsResult.rows,
-    });
+return res.json({
+  summary: summaryResult.rows[0],
+  shipmentTrend: volumeTrendResult.rows,
+  deliveryStatus,
+  shipments: shipmentsResult.rows,
+});
 
   } catch (error) {
     console.log("ANALYTICS ERROR:", error);
