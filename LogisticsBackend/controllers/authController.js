@@ -6,12 +6,12 @@ const pool = require('../config/db');
 const register = async (req, res) => {
     const { fullname, email, phone, password } = req.body;
 
-            // Checking if the input fields are empty
-        if (!fullname || !email || !phone || !password) {
-            return res.status(400).json({
-                message: "Please fill in the fields"
-            })
-        }
+    // Checking if the input fields are empty
+    if (!fullname || !email || !phone || !password) {
+        return res.status(400).json({
+            message: "Please fill in the fields"
+        })
+    }
     try {
         const userExists = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
         if (userExists.rows.length > 0) {
@@ -38,7 +38,7 @@ const register = async (req, res) => {
 
 //LOGIN A USER
 const login = async (req, res) => {
-   const { email, password } = req.body;
+    const { email, password } = req.body;
     try {
         const result = await pool.query("SELECT * FROM users  WHERE email = $1", [email]);
         const user = result.rows[0];
@@ -56,11 +56,11 @@ const login = async (req, res) => {
                 id: user.id,
                 fullname: user.fullname,
                 email: user.email,
-                role: user.role
+                role: user.role.trim().toLowerCase()
             },
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
-        )
+        );
         res.json({ token, user });
         console.log("DB USER:", user);
         console.log("ROLE FROM DB:", user.role);
@@ -74,4 +74,4 @@ const login = async (req, res) => {
 
 
 
-module.exports = {register, login};
+module.exports = { register, login };
