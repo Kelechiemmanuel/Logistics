@@ -12,33 +12,21 @@ const getAnalytics = async (req, res) => {
         COUNT(*) FILTER (WHERE LOWER(status) = 'assigned') AS assigned,
         COUNT(*) FILTER (WHERE LOWER(status) = 'transit') AS transit,
         COUNT(*) FILTER (WHERE LOWER(status) = 'delivered') AS delivered
+
       FROM shipments;
     `);
 
-    // 2. VOLUME TREND (WAVE LINE DATA)
-    const volumeTrendResult = await pool.query(`
-      SELECT
-        TO_CHAR(DATE_TRUNC('day', created_at), 'DD Mon') AS date,
-        COUNT(*)::int AS volume
-      FROM shipments
-      GROUP BY DATE_TRUNC('day', created_at)
-      ORDER BY DATE_TRUNC('day', created_at);
-    `);
+          // 2. SHIPMENT TREND (MONTHLY)
+      const trendResult = await pool.query(`
+        SELECT
+          TO_CHAR(DATE_TRUNC('month', created_at), 'Mon YYYY') AS month,
+          COUNT(*)::int AS total
+        FROM shipments
+        GROUP BY DATE_TRUNC('month', created_at)
+        ORDER BY DATE_TRUNC('month', created_at);
+      `);
 
-    // 🔥 OPTIONAL: ADD GROWTH % FOR DASHBOARD INSIGHTS
-    const shipmentTrend = volumeTrendResult.rows.map((item, index, arr) => {
-      const prev = arr[index - 1]?.volume || 0;
-
-      const growth =
-        prev === 0 ? 100 : ((item.volume - prev) / prev) * 100;
-
-      return {
-        ...item,
-        growth: Number(growth.toFixed(1)),
-      };
-    });
-
-    // 3. DELIVERY STATUS DISTRIBUTION (SAFE FIXED STRUCTURE)
+    // 3. DELIVERY STATUS DISTRIBUTION (FIXED)
     const rawStatusResult = await pool.query(`
       SELECT
         LOWER(status) AS status,
@@ -47,10 +35,11 @@ const getAnalytics = async (req, res) => {
       GROUP BY LOWER(status);
     `);
 
+    // 🔥 FORCE ALL STATUSES (VERY IMPORTANT FOR CHARTS)
     const statuses = ["pending", "assigned", "transit", "delivered"];
 
     const statusMap = new Map(
-      rawStatusResult.rows.map((r) => [r.status, r.count])
+      rawStatusResult.rows.map((row) => [row.status, parseInt(row.count)])
     );
 
     const deliveryStatus = statuses.map((status) => ({
@@ -68,7 +57,7 @@ const getAnalytics = async (req, res) => {
 
     return res.json({
       summary: summaryResult.rows[0],
-      shipmentTrend, // 👈 FIXED (NOW INCLUDES WAVE + GROWTH)
+      shipmentTrend: trendResult.rows,
       deliveryStatus,
       shipments: shipmentsResult.rows,
     });
