@@ -16,17 +16,30 @@ const getAnalytics = async (req, res) => {
       FROM shipments;
     `);
 
-          // 2. SHIPMENT TREND (MONTHLY)
-      const trendResult = await pool.query(`
-        SELECT
-          TO_CHAR(DATE_TRUNC('month', created_at), 'Mon YYYY') AS month,
-          COUNT(*)::int AS total
-        FROM shipments
-        GROUP BY DATE_TRUNC('month', created_at)
-        ORDER BY DATE_TRUNC('month', created_at);
-      `);
+    // 2. SHIPMENT TREND (MONTHLY)
+    const trendResult = await pool.query(`
+      SELECT
+        TO_CHAR(DATE_TRUNC('month', created_at), 'Mon YYYY') AS month,
+        COUNT(*)::int AS total
+      FROM shipments
+      GROUP BY DATE_TRUNC('month', created_at)
+      ORDER BY DATE_TRUNC('month', created_at);
+    `);
 
-    // 3. DELIVERY STATUS DISTRIBUTION (FIXED)
+    // 🔥 HERE IS THE CORRECT PLACE FOR GROWTH LOGIC
+    const trendWithGrowth = trendResult.rows.map((item, index, arr) => {
+      const prev = arr[index - 1]?.total || 0;
+
+      const growth =
+        prev === 0 ? 100 : ((item.total - prev) / prev) * 100;
+
+      return {
+        ...item,
+        growth: Number(growth.toFixed(1)),
+      };
+    });
+
+    // 3. DELIVERY STATUS DISTRIBUTION (FIXED SAFE STRUCTURE)
     const rawStatusResult = await pool.query(`
       SELECT
         LOWER(status) AS status,
@@ -35,11 +48,10 @@ const getAnalytics = async (req, res) => {
       GROUP BY LOWER(status);
     `);
 
-    // 🔥 FORCE ALL STATUSES (VERY IMPORTANT FOR CHARTS)
     const statuses = ["pending", "assigned", "transit", "delivered"];
 
     const statusMap = new Map(
-      rawStatusResult.rows.map((row) => [row.status, parseInt(row.count)])
+      rawStatusResult.rows.map((r) => [r.status, r.count])
     );
 
     const deliveryStatus = statuses.map((status) => ({
@@ -55,9 +67,10 @@ const getAnalytics = async (req, res) => {
       LIMIT 10;
     `);
 
+    // ✅ FINAL RESPONSE
     return res.json({
       summary: summaryResult.rows[0],
-      shipmentTrend: trendResult.rows,
+      shipmentTrend: trendWithGrowth, // 👈 USED HERE
       deliveryStatus,
       shipments: shipmentsResult.rows,
     });
