@@ -3,7 +3,7 @@ import route from '../assets/route.jpg'
 import shipping from '../assets/shipping.jpg'
 import API from '../api/api'
 import { X } from 'lucide-react'
-// import ProgressBar from './ProgressiveBar'
+import ProgressBar from './ProgressiveBar'
 
 
 const TrackShipment = () => {
@@ -11,19 +11,17 @@ const TrackShipment = () => {
   const [shipment, setShipment] = useState(null)
   const [message, setMessage] = useState("")
   const [pop, setPop] = useState(false);
-  // const steps = ["packed", "in_transit", "delivered"];
-  
+  const steps = ["packed", "in_transit", "delivered"];
   const trackShipments = async () => {
     if (!trackingId) {
       setMessage("Please enter tracking ID");
       return;
     }
     try {
-      const res = await API.get(`api/shipments/track/${trackingId.trim()}`)
+      const res = await API.get(`api/shipments/track/${trackingId}`)
       setShipment(res.data.tracking)
       setPop(true)
       setMessage(`Shipment found for Tracking ID ${trackingId}`)
-      console.log("TRACKING ID:", trackingId);
 
     } catch (error) {
       console.log("Tracking error", error);
@@ -34,6 +32,7 @@ const TrackShipment = () => {
   }
 
   return (
+    <>
     <section className="relative w-full h-[50%] md:p-25 p-10">
       <div className="absolute inset-0 z-0 bg-black/50"
         style={{
@@ -53,16 +52,6 @@ const TrackShipment = () => {
             />
             <button onClick={trackShipments} className='bg-[#ff5c00] p-3 px-7 text-[#093856] cursor-pointer transition rounded-lg'>Track</button>
           </div>
-
-          <>
-            <section className="relative">
-              {/* Entire page content */}
-
-              <div className="relative z-10">
-                {/* Background cards */}
-              </div>
-
-            </section>
 
             {/* POPUP OUTSIDE SECTION */}
             {pop && shipment && (
@@ -139,7 +128,7 @@ const TrackShipment = () => {
                       </div>
                     </div>
                     <div>
-{/* 
+
                       <ProgressBar status={shipment.status} />
                       <div className="grid grid-cols-3 text-xs mt-2 w-[90%]">
                         {steps.map((step) => (
@@ -154,7 +143,7 @@ const TrackShipment = () => {
                             {step.replace("_", " ")}
                           </span>
                         ))}
-                      </div> */}
+                      </div>
                     </div>
                   </div>
 
@@ -162,11 +151,11 @@ const TrackShipment = () => {
 
               </div>
             )}
-          </>
 
         </div>
       </div>
     </section>
+    </>
   )
 }
 

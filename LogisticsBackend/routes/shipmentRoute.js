@@ -12,7 +12,7 @@ router.post('/create',
 
 router.get('/track/:trackingId', 
     authMiddleware,
-    roleMiddleware("customer"),
+    roleMiddleware("customer", "admin"),
     trackShipments
 
 )
