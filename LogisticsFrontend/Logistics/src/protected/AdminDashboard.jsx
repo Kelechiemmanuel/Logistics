@@ -97,12 +97,12 @@ const AdminDashboard = () => {
               .slice(0, 8)
               .map((ship, index) => (
                 <div key={ship.id || index} className='grid gap-5 grid-cols-8 text-xs p-4  border-t border-t-gray-200'>
-                  <h1>{ship.customer_name}</h1>
-                  <p>{ship.tracking_id}</p>
-                  <p className='text-[8px]'>{ship.pickup_address}</p>
-                  <p>{ship.status}</p>
-                  <p>{ship.service_type}</p>
-                  <p>{ship.vehicle}</p>
+                  <h1>{ship.customer_name || "N/A"}</h1>
+                  <p>{ship.tracking_id || "N/A"}</p>
+                  <p className='line-clamp-2'>{ship.pickup_address || "-"}</p>
+                  <p>{ship.status || "Pending"}</p>
+                  <p>{ship.service_type || "-"}</p>
+                  <p>{ship.vehicle || "-"}</p>
                   <p>
                     {new Date(ship.created_at).toLocaleDateString("en-GB", {
                       day: "2-digit",
